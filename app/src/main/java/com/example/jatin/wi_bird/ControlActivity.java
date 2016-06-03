@@ -1,20 +1,24 @@
 package com.example.jatin.wi_bird;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
 
-public class ControlActivity extends BaseActivity {
-    String conn_blue="Connect via Bluetooth",conn_wifi="Connect via Wi-fi";
+public class ControlActivity extends ActionBarActivity {
+    String conn_blue = "Connect via Bluetooth", conn_wifi = "Connect via Wi-fi", dis = "Disconnect";
     private Toolbar toolbar;
+    BluetoothAdapter mBluetoothAdapter;
+    WifiManager wifi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,11 @@ public class ControlActivity extends BaseActivity {
 */
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mBluetoothAdapter.isEnabled());
+        wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        ((MyApplication) this.getApplication()).setEarlyWifiState(wifi.isWifiEnabled());
     }
 
 
@@ -58,10 +67,38 @@ public class ControlActivity extends BaseActivity {
             PopupMenu popupMenu = new PopupMenu(this, menuItemView);
             popupMenu.getMenu().add(0, 0, 0, conn_blue);
             popupMenu.getMenu().add(0, 1, 1, conn_wifi);
-
-
+            popupMenu.getMenu().add(0, 2, 2, dis);
             popupMenu.show();
-            // ...
+
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case 0: {
+                            //Toast.makeText(getApplication(), "Bluetooth connection needed",Toast.LENGTH_LONG).show();
+                            if (!mBluetoothAdapter.isEnabled()) {
+                                mBluetoothAdapter.enable();
+                            }
+                            break;
+                        }
+                        case 1: {
+                            //Toast.makeText(getApplication(), "Wifi connection needed",Toast.LENGTH_LONG).show();
+                            if (!wifi.isWifiEnabled()) {
+                                wifi.setWifiEnabled(true);
+                            }
+                            break;
+                        }
+                        case 2: {
+                            //Toast.makeText(getApplication(), "Disconnect",Toast.LENGTH_LONG).show();
+                            break;
+                        }
+                        default:
+                            //Toast.makeText(getApplication(), item.getItemId()+"",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    return true;
+                }
+            });
             return true;
 
         }
