@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,7 +28,9 @@ public class NavigationDrawerFragment extends Fragment {
     private DrawerLayout mDrawerLayout;
     private View containerView;
     private boolean mUserLearnedDrawer;
+    private VivzAdapter adapter;
     private boolean mFromSavedInstanceState;
+    private RecyclerView recyclerView;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -34,7 +41,14 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
+
+        adapter = new VivzAdapter(getActivity(), getData());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return layout;
     }
 
     public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
@@ -73,6 +87,20 @@ public class NavigationDrawerFragment extends Fragment {
                 mDrawerToggle.syncState();
             }
         });
+    }
+
+    public static List<Information> getData() {
+        //load only static data inside a drawer
+        List<Information> data = new ArrayList<>();
+        int[] icons = {R.drawable.ic_control, R.drawable.ic_wireless, R.drawable.ic_velocity};
+        String[] titles = {"Controls", "Sensor values", "Set Velocity"};
+        for (int i = 0; i < titles.length && i< icons.length; i++) {
+            Information current = new Information();
+            current.iconId = icons[i];
+            current.title = titles[i];
+            data.add(current);
+        }
+        return data;
     }
 
     public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
