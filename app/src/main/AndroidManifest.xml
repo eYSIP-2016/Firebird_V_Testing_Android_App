@@ -2,13 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jatin.wi_bird" >
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
-        android:name="MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,7 +25,8 @@
         <activity
             android:name=".ControlActivity"
             android:label="@string/title_activity_control"
-            android:parentActivityName="com.example.jatin.wi_bird.MainActivity">
+            android:parentActivityName=".MainActivity" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +35,8 @@
         <activity
             android:name=".SensorActivity"
             android:label="@string/title_activity_sensor"
-            android:parentActivityName="com.example.jatin.wi_bird.MainActivity">
+            android:parentActivityName=".MainActivity" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -43,7 +45,8 @@
         <activity
             android:name=".VelocityActivity"
             android:label="@string/title_activity_velocity"
-            android:parentActivityName="com.example.jatin.wi_bird.MainActivity">
+            android:parentActivityName=".MainActivity" >
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -53,6 +56,15 @@
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        <activity
+            android:name=".DeviceListActivity"
+            android:label="@string/title_activity_device_list" >
+        </activity>
+        <service
+            android:name=".BtConnection"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

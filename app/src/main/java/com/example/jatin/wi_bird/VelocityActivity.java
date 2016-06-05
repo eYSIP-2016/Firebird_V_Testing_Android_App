@@ -4,21 +4,46 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 
 public class VelocityActivity extends ActionBarActivity {
     String conn_blue="Connect via Bluetooth",conn_wifi="Connect via Wi-fi",dis="Disconnect";
     private Toolbar toolbar;
-    BluetoothAdapter mBluetoothAdapter;
+    BluetoothAdapter mAdapter;
     WifiManager wifi;
+
+    //for debugging
+    final String TAG = "Wi-bird";
+
+    //to store object of BtConnection
+    BtConnection mBtConnection;
+
+    //stores whether activity is bound to service or not
+    boolean mBound = false;
+
+    // select the left and right motor velocity with the help of seekbar
+    SeekBar leftMotorVelocitySeekBar, rightMotorVelocitySeekBar;
+
+    // Text box used to enter the velocity of both the wheels
+    EditText leftMotorVelocityText, rightMotorVelocityText;
+
+    // sets the velocity of robot
+    Button setButton;
+
+    // stores the left and right motor velocity
+    int leftMotorVelocity, rightMotorVelocity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +52,10 @@ public class VelocityActivity extends ActionBarActivity {
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mBluetoothAdapter.isEnabled());
+        mAdapter = BluetoothAdapter.getDefaultAdapter();
+        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
         wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         ((MyApplication) this.getApplication()).setEarlyWifiState(wifi.isWifiEnabled());
     }
@@ -49,55 +75,13 @@ public class VelocityActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_home3) {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+
+        if(id==android.R.id.home)
+        {
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 
-        if (id == R.id.action_net3) {
-            View menuItemView = findViewById(R.id.action_net3);
-            PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-            popupMenu.getMenu().add(0, 0, 0, conn_blue);
-            popupMenu.getMenu().add(0, 1, 1, conn_wifi);
-            popupMenu.getMenu().add(0, 2, 2, dis);
-            popupMenu.show();
-
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch(item.getItemId()) {
-                        case 0: {
-                            //Toast.makeText(getApplication(), "Bluetooth connection needed",Toast.LENGTH_LONG).show();
-                            if(!mBluetoothAdapter.isEnabled())
-                            {
-                                mBluetoothAdapter.enable();
-                            }
-                            break;
-                        }
-                        case 1: {
-                            //Toast.makeText(getApplication(), "Wifi connection needed",Toast.LENGTH_LONG).show();
-                            if(!wifi.isWifiEnabled())
-                            {
-                                wifi.setWifiEnabled(true);
-                            }
-                            break;
-                        }
-                        case 2: {
-                            //Toast.makeText(getApplication(), "Disconnect",Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                        default:
-                            //Toast.makeText(getApplication(), item.getItemId()+"",Toast.LENGTH_LONG).show();
-                            break;
-                    }
-                    return true;
-                }
-            });
-            return true;
-
-        }
 
         return super.onOptionsItemSelected(item);
     }

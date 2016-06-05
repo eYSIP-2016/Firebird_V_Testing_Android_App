@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,7 +17,7 @@ import android.widget.PopupMenu;
 public class ControlActivity extends ActionBarActivity {
     String conn_blue = "Connect via Bluetooth", conn_wifi = "Connect via Wi-fi", dis = "Disconnect";
     private Toolbar toolbar;
-    BluetoothAdapter mBluetoothAdapter;
+    BluetoothAdapter mAdapter;
     WifiManager wifi;
 
     @Override
@@ -32,9 +33,10 @@ public class ControlActivity extends ActionBarActivity {
 */
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mBluetoothAdapter.isEnabled());
+        mAdapter = BluetoothAdapter.getDefaultAdapter();
+        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
         wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         ((MyApplication) this.getApplication()).setEarlyWifiState(wifi.isWifiEnabled());
     }
@@ -54,53 +56,11 @@ public class ControlActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_home1) {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+
+        if(id==android.R.id.home)
+        {
+            NavUtils.navigateUpFromSameTask(this);
             return true;
-        }
-
-        if (id == R.id.action_net1) {
-            View menuItemView = findViewById(R.id.action_net1);
-            PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-            popupMenu.getMenu().add(0, 0, 0, conn_blue);
-            popupMenu.getMenu().add(0, 1, 1, conn_wifi);
-            popupMenu.getMenu().add(0, 2, 2, dis);
-            popupMenu.show();
-
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch (item.getItemId()) {
-                        case 0: {
-                            //Toast.makeText(getApplication(), "Bluetooth connection needed",Toast.LENGTH_LONG).show();
-                            if (!mBluetoothAdapter.isEnabled()) {
-                                mBluetoothAdapter.enable();
-                            }
-                            break;
-                        }
-                        case 1: {
-                            //Toast.makeText(getApplication(), "Wifi connection needed",Toast.LENGTH_LONG).show();
-                            if (!wifi.isWifiEnabled()) {
-                                wifi.setWifiEnabled(true);
-                            }
-                            break;
-                        }
-                        case 2: {
-                            //Toast.makeText(getApplication(), "Disconnect",Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                        default:
-                            //Toast.makeText(getApplication(), item.getItemId()+"",Toast.LENGTH_LONG).show();
-                            break;
-                    }
-                    return true;
-                }
-            });
-            return true;
-
         }
 
         return super.onOptionsItemSelected(item);

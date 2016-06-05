@@ -8,5 +8,16 @@
     <color name="colorHighlight">#B6B6B6</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
-    <color name="colorDivider">#B6B6B6</color>
+
+
+    <color name="genre">#666666</color>
+    <color name="year">#888888</color>
+    <color name="list_divider">#C5CAE9</color>
+    <color name="list_row_start_color">#7986CB</color>
+    <color name="list_row_end_color">#5C6BC0</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+    <color name="text_head1">#212121</color>
+    <color name="text_head2">#9E9E9E</color>
+
 </resources>
