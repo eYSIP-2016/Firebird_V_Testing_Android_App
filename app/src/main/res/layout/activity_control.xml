@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,5 +10,151 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_bar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+
+         <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="forward"
+            android:elevation="2dp"
+            android:id="@+id/forward"/>
+
+
+         <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="forward 100 mm"
+            android:id="@+id/forward_100"
+            android:elevation="2dp"
+            android:layout_below="@+id/forward"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="backward"
+            android:id="@+id/backward"
+            android:elevation="2dp"
+            android:layout_below="@+id/forward_100"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="backward 100 mm"
+            android:id="@+id/backward_100"
+            android:elevation="2dp"
+            android:layout_below="@+id/backward"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:elevation="2dp"
+            android:text="rotate right"
+            android:id="@+id/rotate_right"
+            android:layout_below="@+id/backward_100"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="rotate right 90 degree"
+            android:id="@+id/rotate_right_90"
+            android:layout_below="@+id/rotate_right"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:elevation="2dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="rotate left"
+            android:id="@+id/rotate_left"
+            android:layout_below="@+id/rotate_right_90"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="rotate left 90 degree"
+            android:id="@+id/rotate_left_90"
+            android:layout_below="@+id/rotate_left"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="rotate back"
+            android:id="@+id/rotate_back"
+            android:layout_below="@+id/rotate_left_90"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="stop"
+            android:id="@+id/stop"
+            android:layout_below="@+id/rotate_back"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="buzzer on"
+            android:id="@+id/buzzer_on"
+            android:layout_below="@+id/stop"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:theme="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:layout_marginTop="4dp"
+            android:text="buzzer off"
+            android:id="@+id/buzzer_off"
+            android:layout_below="@+id/buzzer_on"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

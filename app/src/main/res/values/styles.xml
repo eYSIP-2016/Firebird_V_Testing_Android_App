@@ -4,9 +4,17 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
     </style>
-    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+
         <item name="colorPrimary" >@color/primaryColor</item>
         <item name="colorPrimaryDark" >@color/primaryColorDark</item>
         <item name="colorAccent" >@color/colorAccent</item>
+        <item name="android:colorPressedHighlight">@color/pressed</item>
+
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+       <item name="colorButtonNormal">@color/colorAccent</item>
+
     </style>
 </resources>

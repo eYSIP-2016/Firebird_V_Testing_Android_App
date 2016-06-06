@@ -2,9 +2,10 @@
 <resources>
     <color name="primaryColor">#3F51B5</color>
     <color name="primaryColorDark">#303F9F</color>
-    <color name="colorAccent">#F50057</color>
+    <color name="colorAccent">#3F51B5</color>
+    <color name="pressed">#303F9F</color>
     <color name="drawer">#EEE</color>
-    <color name="back">#E8EAF6</color>
+    <color name="back">#F5F5F5</color>
     <color name="colorHighlight">#B6B6B6</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>

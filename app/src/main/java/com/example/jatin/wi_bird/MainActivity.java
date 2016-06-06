@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.ActivityInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -81,7 +82,13 @@ public class MainActivity extends ActionBarActivity {
         // Bind to LocalService
         Intent intent = new Intent(this, BtConnection.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        /*if(mBtConnection.connect())
+        {
+            setStatus("Connected to " + mBtConnection.mDevice.getName());
+        }*/
     }
+
+
 
     /**
      * Function Name: onStop
@@ -94,10 +101,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         // Unbind from the service
-        if (mBound) {
+       /* if (mBound) {
             unbindService(mConnection);
             mBound = false;
-        }
+            Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
+        }*/
     }
 
     /**
@@ -121,6 +129,8 @@ public class MainActivity extends ActionBarActivity {
             BtConnection.LocalBinder binder = (BtConnection.LocalBinder) service;
             mBtConnection = binder.getService();
             mBound = true;
+            Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
+
         }
 
         /**
@@ -165,7 +175,7 @@ public class MainActivity extends ActionBarActivity {
                     // When the request to enable Bluetooth returns
                     if (resultCode == Activity.RESULT_CANCELED) {
                         // SensorItem did not enable Bluetooth or an error occurred
-                        Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving BlueFire", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving Wi-bird", Toast.LENGTH_SHORT).show();
                         finish();
                     }
             }

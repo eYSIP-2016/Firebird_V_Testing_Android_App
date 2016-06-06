@@ -200,14 +200,16 @@ public class SensorActivity extends ActionBarActivity {
                         // reads the sensors value
                         m = mBtConnection.readData();
                         Log.d(TAG, "Sensors readTghread ir1" + m);
-                        runOnUiThread(new Runnable() {
+                        //final int finalI = i;
+                        array[i].sensor_value=String.valueOf(m);
+                        /*runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                array[0].sensor_value=String.valueOf(m);
+
                                 Log.d(TAG, "Sensors readTghread ir1 update");
                             }
-                        });
+                        });*/
                         Thread.sleep(t);
                     }
 
@@ -332,7 +334,10 @@ public class SensorActivity extends ActionBarActivity {
         }*/
         if(id==android.R.id.home)
         {
-            NavUtils.navigateUpFromSameTask(this);
+            Intent intent = new Intent(SensorActivity.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 
