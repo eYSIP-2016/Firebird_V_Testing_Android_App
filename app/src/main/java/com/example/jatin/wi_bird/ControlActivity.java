@@ -34,7 +34,7 @@ public class ControlActivity extends ActionBarActivity {
             rotate_left, rotate_left_90, rotate_right, rotate_right_90, rotate_back;
     //variables for stopping the different threads
     private boolean bForward, bBackward, bRotateLeft_90, bRotateRight_90, bBuzzerOn, bBuzzerOFF,
-            bForward_100, bBackward_100,bRotateLeft, bRotateRight, bRotateBack;
+            bForward_100, bBackward_100, bRotateLeft, bRotateRight, bRotateBack;
 
 
     //Constants for various motions
@@ -45,11 +45,11 @@ public class ControlActivity extends ActionBarActivity {
     final String moveStop = "e";
     final String makeBuzzerOn = "f";
     final String makeBuzzerOff = "g";
-    final String moveForward100 = "forward_A";
-    final String moveBackward100 = "backward_B";
-    final String rotateLeft90 = "rotate_C";
-    final String rotateRight90 = "rotate_D";
-    final String rotateBack = "rotate_E";
+    final String moveForward100 = "C";
+    final String moveBackward100 = "D";
+    final String rotateLeft90 = "E";
+    final String rotateRight90 = "F";
+    final String rotateBack = "G";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,17 +57,17 @@ public class ControlActivity extends ActionBarActivity {
         setContentView(R.layout.activity_control);
 
         forward = (Button) findViewById(R.id.forward);
-        forward_100 = (Button) findViewById(R.id.forward_100);
+        //forward_100 = (Button) findViewById(R.id.forward_100);
         backward = (Button) findViewById(R.id.backward);
-        backward_100 = (Button) findViewById(R.id.backward_100);
+        //backward_100 = (Button) findViewById(R.id.backward_100);
         stop = (Button) findViewById(R.id.stop);
         buzzer_on = (Button) findViewById(R.id.buzzer_on);
         buzzer_off = (Button) findViewById(R.id.buzzer_off);
         rotate_left = (Button) findViewById(R.id.rotate_left);
-        rotate_left_90 = (Button) findViewById(R.id.rotate_left_90);
+        //rotate_left_90 = (Button) findViewById(R.id.rotate_left_90);
         rotate_right = (Button) findViewById(R.id.rotate_right);
-        rotate_right_90 = (Button) findViewById(R.id.rotate_right_90);
-        rotate_back = (Button) findViewById(R.id.rotate_back);
+        //rotate_right_90 = (Button) findViewById(R.id.rotate_right_90);
+        //rotate_back = (Button) findViewById(R.id.rotate_back);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -287,7 +287,7 @@ public class ControlActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
             }
         });
-        rotate_left_90.setOnClickListener(new View.OnClickListener() {
+       /* rotate_left_90.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isBound()) {
@@ -351,7 +351,7 @@ public class ControlActivity extends ActionBarActivity {
                 } else
                     Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
     }
 
@@ -437,12 +437,12 @@ public class ControlActivity extends ActionBarActivity {
         }
     }
 
-    // Thread to make the bot rotate left 90
+   /* // Thread to make the bot rotate left 90
     private class Left_90Thread implements Runnable {
         public void run() {
             while (bRotateLeft_90) {
                 try {
-                    //mBtConnection.sendData(rotateLeft90);
+                    mBtConnection.sendData(rotateLeft90);
 
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
@@ -456,7 +456,7 @@ public class ControlActivity extends ActionBarActivity {
         public void run() {
             while (bRotateRight_90) {
                 try {
-                    //mBtConnection.sendData(rotateRight90);
+                    mBtConnection.sendData(rotateRight90);
 
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
@@ -470,7 +470,7 @@ public class ControlActivity extends ActionBarActivity {
         public void run() {
             while (bForward_100) {
                 try {
-                    //mBtConnection.sendData(moveForward100);
+                    mBtConnection.sendData(moveForward100);
 
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
@@ -484,7 +484,7 @@ public class ControlActivity extends ActionBarActivity {
         public void run() {
             while (bBackward_100) {
                 try {
-                    //mBtConnection.sendData(moveBackward100);
+                    mBtConnection.sendData(moveBackward100);
 
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
@@ -498,18 +498,18 @@ public class ControlActivity extends ActionBarActivity {
         public void run() {
             while (bRotateBack) {
                 try {
-                    //mBtConnection.sendData(rotateBack);
+                    mBtConnection.sendData(rotateBack);
 
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
                 }
             }
         }
-    }
+    }*/
 
 
     public void stopAllThreads() {
-        bForward = bBackward = bRotateLeft_90 = bRotateRight_90 =bBuzzerOFF=bBuzzerOn=
+        bForward = bBackward = bRotateLeft_90 = bRotateRight_90 = bBuzzerOFF = bBuzzerOn =
                 bForward_100 = bBackward_100 = bRotateLeft = bRotateRight = bRotateBack = false;
     }
 
