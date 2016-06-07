@@ -11,6 +11,7 @@ import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -24,6 +25,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import java.util.logging.Handler;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -129,7 +132,7 @@ public class MainActivity extends ActionBarActivity {
             BtConnection.LocalBinder binder = (BtConnection.LocalBinder) service;
             mBtConnection = binder.getService();
             mBound = true;
-            Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
 
         }
 
@@ -243,6 +246,7 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -256,10 +260,10 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_net) {
             View menuItemView = findViewById(R.id.action_net);
             PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-            popupMenu.getMenu().add(0, 0, 0, conn_blue);
+           /* popupMenu.getMenu().add(0, 0, 0, conn_blue);
             popupMenu.getMenu().add(0, 1, 1, conn_wifi);
             popupMenu.getMenu().add(0, 2, 2, dis);
-            popupMenu.show();
+            popupMenu.show();*/
 
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -270,9 +274,20 @@ public class MainActivity extends ActionBarActivity {
                             if (!mAdapter.isEnabled()) {
                                 mAdapter.enable();
                             }
-                            //Launch the DeviceListActivity to see devices
-                            Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
-                            startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+                            new CountDownTimer(2000, 1000) {
+
+                                public void onTick(long millisUntilFinished) {
+                                    Toast.makeText(getApplication(),"fetching paired devices...",Toast.LENGTH_LONG).show();
+
+                                }
+
+                                public void onFinish() {
+                                    //Launch the DeviceListActivity to see devices
+                                    Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
+                                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+                                }
+                            }.start();
+
                             break;
                         }
                         case 1: {
@@ -283,7 +298,8 @@ public class MainActivity extends ActionBarActivity {
                             break;
                         }
                         case 2: {
-                            //Toast.makeText(getApplication(), "Disconnect",Toast.LENGTH_LONG).show();
+                            mBtConnection.disconnect();
+                            Toast.makeText(getApplication(), "Disconnected",Toast.LENGTH_LONG).show();
                             break;
                         }
                         default:

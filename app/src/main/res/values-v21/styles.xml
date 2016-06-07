@@ -8,6 +8,7 @@
         <item name="android:colorPrimaryDark" >@color/primaryColorDark</item>
         <item name="android:colorAccent" >@color/colorAccent</item>
         <item name="android:colorPressedHighlight">@color/pressed</item>
+        <item name="android:popupTheme">@style/Widget.AppCompat.PopupMenu</item>
     </style>
 
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button">

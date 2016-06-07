@@ -9,5 +9,21 @@
         android:orderInCategory="200"
         android:title="@string/action_net"
         android:icon="@drawable/ic_launch_white_24dp"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:icon="@drawable/ic_bluetooth_white_24dp"
+                android:title="Connect via Bluetooth"
+                app:showAsAction="always" />
+            <item
+                android:icon="@drawable/ic_wifi_white_24dp"
+                android:title="Connect va Wi-fi"
+                app:showAsAction="always" />
+            <item
+
+                android:title="Disconnect"
+                app:showAsAction="always" />
+        </menu>
+     </item>
 </menu>
