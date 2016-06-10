@@ -1,26 +1,374 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context="com.example.jatin.wi_bird.SensorActivity">
-
 
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/list_divider"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_row_selector" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_bar">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp">
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/sharp_sensor_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="SHARP SENSOR VALUES"
+                android:textColor="@color/text_sensor">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ic_sharp_sensor"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@+id/sharp_sensor_head"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_sharp_sensor"></ImageView>
+
+            <TextView
+                android:id="@+id/sharp_sensor_value1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_sharp_sensor"
+                android:layout_alignLeft="@+id/ic_sharp_sensor"
+                android:layout_alignRight="@+id/ic_sharp_sensor"
+                android:layout_below="@+id/ic_sharp_sensor"
+                android:layout_marginTop="4dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Sharp Sensor 1"
+                android:textColor="@color/text_sensor"></TextView>
 
 
 
 
+            <TextView
+                android:id="@+id/sharp_sensor_value2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_sharp_sensor"
+                android:layout_alignLeft="@+id/ic_sharp_sensor"
+                android:layout_alignRight="@+id/ic_sharp_sensor"
+                android:layout_below="@+id/sharp_sensor_value1"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Sharp Sensor 2"
+                android:textColor="@color/text_sensor"
+                >
 
- </LinearLayout>
+            </TextView>
+
+            <TextView
+                android:id="@+id/sharp_sensor_value3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_sharp_sensor"
+                android:layout_alignLeft="@+id/ic_sharp_sensor"
+                android:layout_alignRight="@+id/ic_sharp_sensor"
+                android:layout_below="@+id/sharp_sensor_value2"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Sharp Sensor 3"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/sharp_sensor_value4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_sharp_sensor"
+                android:layout_alignLeft="@+id/ic_sharp_sensor"
+                android:layout_alignRight="@+id/ic_sharp_sensor"
+                android:layout_below="@+id/sharp_sensor_value3"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Sharp Sensor 4"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/sharp_sensor_value5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_sharp_sensor"
+                android:layout_alignLeft="@+id/ic_sharp_sensor"
+                android:layout_alignRight="@+id/ic_sharp_sensor"
+                android:layout_below="@+id/sharp_sensor_value4"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Sharp Sensor 5"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/proximity_sensor_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sharp_sensor_value5"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="PROXIMITY SENSOR VALUES"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ic_proximity_sensor"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@+id/proximity_sensor_head"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_proximity_sensor"></ImageView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/ic_proximity_sensor"
+                android:layout_marginTop="4dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 1"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value1"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 2"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value2"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 3"
+                android:textColor="@color/text_sensor"
+               >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value3"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 4"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value4"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 5"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value5"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 6"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value6"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 7"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/proximity_sensor_value8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_proximity_sensor"
+                android:layout_alignLeft="@+id/ic_proximity_sensor"
+                android:layout_alignRight="@+id/ic_proximity_sensor"
+                android:layout_below="@+id/proximity_sensor_value7"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="Proximity Sensor 8"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/white_sensor_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/proximity_sensor_value8"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="WHITE LINE SENSOR VALUES"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ic_white_line_sensor"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/white_sensor_head"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_white_line_sensor"></ImageView>
+
+
+            <TextView
+                android:id="@+id/white_sensor_value1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_white_line_sensor"
+                android:layout_alignLeft="@+id/ic_white_line_sensor"
+                android:layout_alignRight="@+id/ic_white_line_sensor"
+                android:layout_below="@+id/ic_white_line_sensor"
+                android:layout_marginTop="4dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="White Line Sensor 1"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/white_sensor_value2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_white_line_sensor"
+                android:layout_alignLeft="@+id/ic_white_line_sensor"
+                android:layout_alignRight="@+id/ic_white_line_sensor"
+                android:layout_below="@+id/white_sensor_value1"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="White Line Sensor 2"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/white_sensor_value3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ic_white_line_sensor"
+                android:layout_alignLeft="@+id/ic_white_line_sensor"
+                android:layout_alignRight="@+id/ic_white_line_sensor"
+                android:layout_below="@+id/white_sensor_value2"
+                android:layout_marginTop="2dp"
+                android:background="@color/text_head1"
+                android:gravity="center"
+                android:text="White Line Sensor 3"
+                android:textColor="@color/text_sensor"
+                >
+
+            </TextView>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
 

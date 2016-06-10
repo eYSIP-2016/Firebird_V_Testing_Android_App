@@ -12,10 +12,146 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/back"/>
+
+           <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/layout"
+                android:background="@color/text_head1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/main_activity_head"
+                    android:id="@+id/main_activity_head">
+
+                </ImageView>
+
+               <ScrollView
+                   android:layout_height="match_parent"
+                   android:layout_width="match_parent"
+                   android:layout_below="@+id/main_activity_head">
+
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="20dp">
+
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/main_content"
+
+                    android:text="@string/main_activity_content"/>
+
+
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/specification_heading"
+                    android:layout_below="@id/main_content"
+                    android:textSize="25dp"
+                    android:text="SPECIFICATIONS:"/>
+
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/micro_heading"
+                    android:layout_below="@id/specification_heading"
+                    android:text="Microcontroller:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/micro_heading_content"
+                    android:layout_below="@id/micro_heading"
+                    android:text="@string/micro_content"
+                    />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/sensors_heading"
+                    android:layout_below="@id/micro_heading_content"
+                    android:text="Sensors:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/sensors_heading_content"
+                    android:layout_below="@id/sensors_heading"
+                    android:text="@string/sensor_content"
+                    />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/indicators_heading"
+                    android:layout_below="@id/sensors_heading_content"
+                    android:text="Indicators:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/indicators_heading_content"
+                    android:layout_below="@id/indicators_heading"
+                    android:text="@string/indicator_content" />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/control_heading"
+                    android:layout_below="@id/indicators_heading_content"
+                    android:text="Control:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/control_heading_content"
+                    android:layout_below="@id/control_heading"
+                    android:text="@string/control_content" />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/comm_heading"
+                    android:layout_below="@id/control_heading_content"
+                    android:text="Communication:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/comm_heading_content"
+                    android:layout_below="@id/comm_heading"
+                    android:text="@string/comm_content" />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/dimension_heading"
+                    android:layout_below="@id/comm_heading_content"
+                    android:text="Dimensions:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/dimension_heading_content"
+                    android:layout_below="@id/dimension_heading"
+                    android:text="@string/dimension_content" />
+
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/power_heading"
+                    android:layout_below="@id/dimension_heading_content"
+                    android:text="Power:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/power_heading_content"
+                    android:layout_below="@id/power_heading"
+                    android:text="@string/power_content" />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/battery_heading"
+                    android:layout_below="@id/power_heading_content"
+                    android:text="Battery Life:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/battery_heading_content"
+                    android:layout_below="@id/battery_heading"
+                    android:text="@string/battery_content" />
+                <TextView
+                    style="@style/MyHeadTextStyle"
+                    android:id="@+id/locomotion_heading"
+                    android:layout_below="@id/battery_heading_content"
+                    android:text="Locomotion:"/>
+                <TextView
+                    style="@style/MyTextStyle"
+                    android:id="@+id/locomotion_heading_content"
+                    android:layout_below="@id/locomotion_heading"
+                    android:text="@string/locomotion_content" />
+                </RelativeLayout>
+               </ScrollView>
+
+            </LinearLayout>
+
 
         <fragment
             android:id="@+id/fragment_navigation_drawer"

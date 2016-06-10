@@ -255,63 +255,36 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.bluetooth) {
+            if (!mAdapter.isEnabled()) {
+                mAdapter.enable();
+            }
+            new CountDownTimer(2000, 1000) {
 
+                public void onTick(long millisUntilFinished) {
+                    Toast.makeText(getApplication(),"fetching paired devices...",Toast.LENGTH_LONG).show();
 
-        if (id == R.id.action_net) {
-            View menuItemView = findViewById(R.id.action_net);
-            PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-           /* popupMenu.getMenu().add(0, 0, 0, conn_blue);
-            popupMenu.getMenu().add(0, 1, 1, conn_wifi);
-            popupMenu.getMenu().add(0, 2, 2, dis);
-            popupMenu.show();*/
-
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch (item.getItemId()) {
-                        case 0: {
-                            //Toast.makeText(getApplication(), "Bluetooth connection needed",Toast.LENGTH_LONG).show();
-                            if (!mAdapter.isEnabled()) {
-                                mAdapter.enable();
-                            }
-                            new CountDownTimer(2000, 1000) {
-
-                                public void onTick(long millisUntilFinished) {
-                                    Toast.makeText(getApplication(),"fetching paired devices...",Toast.LENGTH_LONG).show();
-
-                                }
-
-                                public void onFinish() {
-                                    //Launch the DeviceListActivity to see devices
-                                    Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
-                                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
-                                }
-                            }.start();
-
-                            break;
-                        }
-                        case 1: {
-                            //Toast.makeText(getApplication(), "Wifi connection needed",Toast.LENGTH_LONG).show();
-                            if (!wifi.isWifiEnabled()) {
-                                wifi.setWifiEnabled(true);
-                            }
-                            break;
-                        }
-                        case 2: {
-                            mBtConnection.disconnect();
-                            Toast.makeText(getApplication(), "Disconnected",Toast.LENGTH_LONG).show();
-                            break;
-                        }
-                        default:
-                            //Toast.makeText(getApplication(), item.getItemId()+"",Toast.LENGTH_LONG).show();
-                            break;
-                    }
-                    return true;
                 }
-            });
-            return true;
 
+                public void onFinish() {
+                    //Launch the DeviceListActivity to see devices
+                    Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
+                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+                }
+            }.start();
         }
+        if(id == R.id.wifi) {
+            if (!wifi.isWifiEnabled()) {
+                wifi.setWifiEnabled(true);
+            }
+        }
+        if(id == R.id.disconnect) {
+            mBtConnection.disconnect();
+            Toast.makeText(getApplication(), "Disconnected",Toast.LENGTH_LONG).show();
+        }
+
+
+
         return super.onOptionsItemSelected(item);
     }
 

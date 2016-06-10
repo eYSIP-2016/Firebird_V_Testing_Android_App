@@ -43,8 +43,36 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="angle">Angle</string>
-
-    <!--ListView -->
+    <string name="main_activity_content">As a Universal Robotic Research Platform, Fire Bird V provides an excellent environment
+        for experimentation, algorithm development and testing. Fire Bird V is evolved from Fire Bird IV and Fire Bird II which
+        are being used in IIT Bombay to teach embedded systems and robotics. Its modular architecture allows you to control it
+        using multiple processors such as 8051, AVR, PIC and ARM7 etc. Modular sensor pods can be mounted on the platform as
+        dictated by intended applications. Precision position encoders makes it possible to have accurate position control.
+        The platform can be upgraded to tank drive and Hexapod insect or any other desired form very easily. It is powered by high
+        performance rechargeable NiMH batteries. A 2.4 GHz ZigBee module provides state of the art secure and multi-channel
+        wireless communication up to a range of one kilometer.</string>
+    <string name="micro_content">Atmel ATMEGA2560 as Master microcontroller\nAtmel ATMEGA8 as Slave microcontroller</string>
+    <string name="sensor_content">Three white line sensors (extendable to 7)
+        \nFive Sharp GP2Y0A02YK IR range sensor
+        \nEight analog IR proximity sensors
+        \nTwo position encoders (extendable to four)
+        \nBattery voltage sensing
+        \nCurrent Sensing (Optional)
+        \nFive MaxBotix Ultrasonic Range Sensors (Optional)</string>
+    <string name="indicator_content">2 x 16 Characters LCD\nBuzzer and Indicator LEDs</string>
+    <string name="control_content">Autonomous Control\nPC as Master and Robot as Slave in wired or wireless mode</string>
+    <string name="comm_content">Wired RS232 (serial) communication
+    \nWireless ZigBee Communication (2.4GHZ)
+    \nWi-Fi communication\nBluetooth communication
+    \nSimplex infrared communication</string>
+    <string name="dimension_content">Diameter: 16cm\nHeight: 8.5cm\nWeight: 1100gms</string>
+    <string name="power_content">9.6V Nickel Metal Hydride (NiMH) battery pack and external Auxiliary power from battery charger.
+    \nOn Board Battery monitoring and intelligent battery charger.</string>
+    <string name="battery_content">2 Hours, while motors are operational at 75% of time</string>
+    <string name="locomotion_content">Two DC geared motors in differential drive configuration and caster wheel at front as support
+        \nTop Speed: 24 cm / second
+        \nWheel Diameter: 51mm
+        \nPosition encoder: 30 pulses per revolution\nPosition encoder resolution: 5.44 mm</string>
 
 
 </resources>

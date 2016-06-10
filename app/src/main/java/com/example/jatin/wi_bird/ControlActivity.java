@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -30,7 +33,8 @@ public class ControlActivity extends ActionBarActivity {
     //stores whether activity is bound to service or not
     boolean mBound = false;
     WifiManager wifi;
-    private Button forward, forward_100, backward, backward_100, stop, buzzer_on, buzzer_off,
+    TextView buzzer_status;
+    private ImageView forward, forward_100, backward, backward_100, stop, buzzer_on, buzzer_off,
             rotate_left, rotate_left_90, rotate_right, rotate_right_90, rotate_back;
     //variables for stopping the different threads
     private boolean bForward, bBackward, bRotateLeft_90, bRotateRight_90, bBuzzerOn, bBuzzerOFF,
@@ -56,22 +60,26 @@ public class ControlActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
 
-        forward = (Button) findViewById(R.id.forward);
+        forward = (ImageView) findViewById(R.id.forward);
         //forward_100 = (Button) findViewById(R.id.forward_100);
-        backward = (Button) findViewById(R.id.backward);
+        backward = (ImageView) findViewById(R.id.backward);
         //backward_100 = (Button) findViewById(R.id.backward_100);
-        stop = (Button) findViewById(R.id.stop);
-        buzzer_on = (Button) findViewById(R.id.buzzer_on);
-        buzzer_off = (Button) findViewById(R.id.buzzer_off);
-        rotate_left = (Button) findViewById(R.id.rotate_left);
+        stop = (ImageView) findViewById(R.id.stop);
+        buzzer_on = (ImageView) findViewById(R.id.buzzer_on);
+        buzzer_off = (ImageView) findViewById(R.id.buzzer_off);
+        rotate_left = (ImageView) findViewById(R.id.rotate_left);
         //rotate_left_90 = (Button) findViewById(R.id.rotate_left_90);
-        rotate_right = (Button) findViewById(R.id.rotate_right);
+        rotate_right = (ImageView) findViewById(R.id.rotate_right);
         //rotate_right_90 = (Button) findViewById(R.id.rotate_right_90);
         //rotate_back = (Button) findViewById(R.id.rotate_back);
+        buzzer_status = (TextView)findViewById(R.id.buzzer_status);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        buzzer_on.setVisibility(View.VISIBLE);
+        buzzer_off.setVisibility(View.INVISIBLE);
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
@@ -418,7 +426,15 @@ public class ControlActivity extends ActionBarActivity {
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
                 }
-
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                        buzzer_on.setVisibility(View.INVISIBLE);
+                        buzzer_off.setVisibility(View.VISIBLE);
+                        buzzer_status.setText("BUZZER ON");
+                    }
+                });
             }
         }
     }
@@ -433,6 +449,15 @@ public class ControlActivity extends ActionBarActivity {
                 } catch (Exception ex) {
                     Log.e(TAG, "Exception ", ex);
                 }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                        buzzer_off.setVisibility(View.INVISIBLE);
+                        buzzer_on.setVisibility(View.VISIBLE);
+                        buzzer_status.setText("BUZZER OFF");
+                    }
+                });
             }
         }
     }

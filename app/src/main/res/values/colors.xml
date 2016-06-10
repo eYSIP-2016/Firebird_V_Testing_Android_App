@@ -18,7 +18,10 @@
     <color name="list_row_end_color">#5C6BC0</color>
     <color name="list_row_hover_start_color">#ebeef0</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
-    <color name="text_head1">#212121</color>
+    <color name="text_head1">#C5CAE9</color>
     <color name="text_head2">#9E9E9E</color>
+    <color name="shadowColor">#7986CB</color>
+    <color name="text_sensor">#5C6BC0</color>
+    <color name="buzzer_status">#E91E63</color>
 
 </resources>

@@ -13,15 +13,18 @@
 
         <menu>
             <item
+                android:id="@+id/bluetooth"
                 android:icon="@drawable/ic_bluetooth_white_24dp"
                 android:title="Connect via Bluetooth"
                 app:showAsAction="always" />
             <item
+                android:id="@+id/wifi"
                 android:icon="@drawable/ic_wifi_white_24dp"
                 android:title="Connect va Wi-fi"
                 app:showAsAction="always" />
             <item
-
+                android:id="@+id/disconnect"
+                android:icon="@drawable/ic_disconnected_96_1"
                 android:title="Disconnect"
                 app:showAsAction="always" />
         </menu>

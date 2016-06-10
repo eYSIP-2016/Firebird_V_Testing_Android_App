@@ -53,6 +53,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
         containerView = getActivity().findViewById(fragmentId);
+
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar,
                 R.string.drawer_open, R.string.drawer_close) {
@@ -92,6 +93,7 @@ public class NavigationDrawerFragment extends Fragment {
     public static List<Information> getData() {
         //load only static data inside a drawer
         List<Information> data = new ArrayList<>();
+
         int[] icons = {R.drawable.ic_control, R.drawable.ic_wireless, R.drawable.ic_velocity};
         String[] titles = {"Controls", "Sensor values", "Set Velocity"};
         for (int i = 0; i < titles.length && i< icons.length; i++) {

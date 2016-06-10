@@ -21,6 +21,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
     List<Information> data = Collections.emptyList();
     private LayoutInflater inflater;
     private Context context;
+    private int selectedPos = 0;
 
     public VivzAdapter(Context context, List<Information> data) {
         this.context = context;
@@ -43,6 +44,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Information current = data.get(position);
+        holder.itemView.setSelected(selectedPos == position);
         holder.title.setText(current.title);
         holder.icon.setImageResource(current.iconId);
 
@@ -63,14 +65,21 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             context = itemView.getContext();
             title = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
-            icon.setOnClickListener(this);
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View v) {
             Intent i;
+            /*notifyItemChanged(selectedPos);
+            selectedPos = getLayoutPosition();
+            notifyItemChanged(selectedPos);*/
+
             int pos = getPosition();
             if (pos == 0) {
+
                 i = new Intent(context, ControlActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);

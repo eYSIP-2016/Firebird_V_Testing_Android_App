@@ -1,159 +1,142 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back"
     tools:context="com.example.jatin.wi_bird.ControlActivity">
 
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:paddingTop="28dp"
+        android:alpha=".75"/>
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_gravity="center_vertical">
-
-
-         <Button
-            android:theme="@style/Widget.AppCompat.Button"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="forward"
-            android:elevation="2dp"
-            android:id="@+id/forward"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
+            <GridLayout
 
-        <!-- <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="forward 100 mm"
-            android:id="@+id/forward_100"
-            android:elevation="2dp"
-            android:layout_below="@+id/forward"
-            android:layout_centerHorizontal="true" />-->
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="backward"
-            android:id="@+id/backward"
-            android:elevation="2dp"
-            android:layout_below="@+id/forward"
-            android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:id="@+id/forward"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:layout_marginBottom="2dp"
+                    android:layout_row="0"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_up" />
 
-       <!-- <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="backward 100 mm"
-            android:id="@+id/backward_100"
-            android:elevation="2dp"
-            android:layout_below="@+id/backward"
-            android:layout_centerHorizontal="true" />-->
+                <ImageView
+                    android:id="@+id/rotate_left"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="0"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="2dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="3"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_left" />
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:elevation="2dp"
-            android:text="rotate right"
-            android:id="@+id/rotate_right"
-            android:layout_below="@+id/backward"
-            android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:id="@+id/backward"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
 
-       <!-- <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="rotate right 90 degree"
-            android:id="@+id/rotate_right_90"
-            android:layout_below="@+id/rotate_right"
-            android:layout_centerHorizontal="true" />-->
+                    android:layout_column="1"
+                    android:layout_marginTop="2dp"
+                    android:layout_row="2"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_down" />
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:elevation="2dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="rotate left"
-            android:id="@+id/rotate_left"
-            android:layout_below="@+id/rotate_right"
-            android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:id="@+id/stop"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="1"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_row="1"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_stop" />
 
-       <!-- <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="rotate left 90 degree"
-            android:id="@+id/rotate_left_90"
-            android:layout_below="@+id/rotate_left"
-            android:layout_centerHorizontal="true" />-->
+                <ImageView
+                    android:id="@+id/rotate_right"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_column="2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:layout_row="0"
+                    android:layout_rowSpan="3"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_arrow_right" />
+            </GridLayout>
 
-       <!-- <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="rotate back"
-            android:id="@+id/rotate_back"
-            android:layout_below="@+id/rotate_left_90"
-            android:layout_centerHorizontal="true" />-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/gridLayout"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="stop"
-            android:id="@+id/stop"
-            android:layout_below="@+id/rotate_left"
-            android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:id="@+id/buzzer_on"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_buzzer_on" />
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="buzzer on"
-            android:id="@+id/buzzer_on"
-            android:layout_below="@+id/stop"
-            android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:id="@+id/buzzer_off"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_buzzer_off" />
 
-        <Button
-            android:theme="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            android:layout_marginTop="4dp"
-            android:text="buzzer off"
-            android:id="@+id/buzzer_off"
-            android:layout_below="@+id/buzzer_on"
-            android:layout_centerHorizontal="true" />
+                <TextView
+                    style=""
+                    android:id="@+id/buzzer_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BUZZER OFF"
+                    android:textSize="20sp"
+                    android:textColor="@color/buzzer_status"
+                    android:textStyle="bold"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/buzzer_off"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center" />
+            </RelativeLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
     </ScrollView>
 

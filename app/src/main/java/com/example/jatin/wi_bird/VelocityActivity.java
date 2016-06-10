@@ -9,7 +9,8 @@ import android.content.pm.ActivityInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.NavUtils;
+
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -19,7 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
+import android.widget.TextView;
+
+
+import com.triggertrap.seekarc.SeekArc;
 
 
 public class VelocityActivity extends ActionBarActivity {
@@ -38,10 +42,10 @@ public class VelocityActivity extends ActionBarActivity {
     boolean mBound = false;
 
     // select the left and right motor velocity with the help of seekbar
-    SeekBar leftMotorVelocitySeekBar, rightMotorVelocitySeekBar;
+    SeekArc leftMotorVelocitySeekBar, rightMotorVelocitySeekBar;
 
     // Text box used to enter the velocity of both the wheels
-    EditText leftMotorVelocityText, rightMotorVelocityText;
+    TextView leftMotorVelocityText, rightMotorVelocityText;
 
     // sets the velocity of robot
     Button setButton;
@@ -55,15 +59,15 @@ public class VelocityActivity extends ActionBarActivity {
         setContentView(R.layout.activity_velocity);
 
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        leftMotorVelocitySeekBar = (SeekBar) findViewById(R.id.left_velocity_seekbar);
+        leftMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_left);
         // finds a view that was identified by the id right_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        rightMotorVelocitySeekBar = (SeekBar) findViewById(R.id.right_velocity_seekbar);
+        rightMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_right);
         // finds a view that was identified by the id set_button from the XML that was processed in onCreate(Bundle)
         setButton = (Button) findViewById(R.id.set_button);
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        leftMotorVelocityText = (EditText) findViewById(R.id.left_velocity_text);
+        leftMotorVelocityText = (TextView) findViewById(R.id.left_velocity_text);
         // finds a view that was identified by the id right_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        rightMotorVelocityText = (EditText) findViewById(R.id.right_velocity_text);
+        rightMotorVelocityText = (TextView) findViewById(R.id.right_velocity_text);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -78,7 +82,7 @@ public class VelocityActivity extends ActionBarActivity {
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
 
         // assigns OnSeekBarChangeListener to leftMotorVelocitySeekBar
-        leftMotorVelocitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        leftMotorVelocitySeekBar.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             // stores the current value of seek bar
             int progress = 0;
 
@@ -94,7 +98,7 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
+            public void onProgressChanged(SeekArc seekBar, int progressValue, boolean fromUser) {
                 progress = progressValue;
                 leftMotorVelocityText.setText("" + progress);
             }
@@ -107,7 +111,7 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekArc seekBar) {
             }
 
             /**
@@ -118,14 +122,14 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekArc seekBar) {
 
             }
         });
 
 
         // assigns OnSeekBarChangeListener to rightMotorVelocitySeekBar
-        rightMotorVelocitySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        rightMotorVelocitySeekBar.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
             // stores the current value of seek bar
             int progress = 0;
 
@@ -141,7 +145,7 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
+            public void onProgressChanged(SeekArc seekBar, int progressValue, boolean fromUser) {
                 progress = progressValue;
                 rightMotorVelocityText.setText("" + progress);
             }
@@ -154,7 +158,7 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekArc seekBar) {
             }
 
             /**
@@ -165,28 +169,28 @@ public class VelocityActivity extends ActionBarActivity {
              *
              */
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekArc seekBar) {
 
             }
         });
 
 
-        // assigns TextChangedListener to leftMotorVelocityText
+       /* // assigns TextChangedListener to leftMotorVelocityText
         leftMotorVelocityText.addTextChangedListener(new TextWatcher() {
 
-            /**
+            *//**
              *
              * Function Name: beforeTextChanged
              * Example Call: This method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
              *               It is an error to attempt to make changes to s from this callback.
              *
-             */
+             *//*
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
-            /**
+            *//**
              *
              * Function Name: onTextChanged
              * Input: s --> char sequence which stores the characters
@@ -197,14 +201,14 @@ public class VelocityActivity extends ActionBarActivity {
              * Logic: This method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
              * Example Call: called automatically when the text is changing
              *
-             */
+             *//*
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!leftMotorVelocityText.getText().toString().isEmpty() && leftMotorVelocityText.getText().toString().length()<4) {
                     int value = Integer.parseInt(leftMotorVelocityText.getText().toString());
 
                     if (value <= 255) {
-                        leftMotorVelocitySeekBar.setProgress(value);
+                       leftMotorVelocitySeekBar.setProgress(0);
                     } else {
                         leftMotorVelocitySeekBar.setProgress(0);
                         leftMotorVelocityText.setText("0");
@@ -214,14 +218,14 @@ public class VelocityActivity extends ActionBarActivity {
             }
 
 
-            /**
+            *//**
              *
              * Function Name: afterTextChanged
              * Input: the editable text s
              * Logic: This method is called to notify you that, somewhere within s, the text has been changed.
              * Example Call: called automatically after the text has been changed
              *
-             */
+             *//*
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -232,19 +236,19 @@ public class VelocityActivity extends ActionBarActivity {
         // assigns TextChangedListener to rightMotorVelocityText
         rightMotorVelocityText.addTextChangedListener(new TextWatcher() {
 
-            /**
+            *//**
              *
              * Function Name: beforeTextChanged
              * Example Call: This method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
              *               It is an error to attempt to make changes to s from this callback.
              *
-             */
+             *//*
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
-            /**
+            *//**
              *
              * Function Name: onTextChanged
              * Input: s --> char sequence which stores the characters
@@ -255,10 +259,10 @@ public class VelocityActivity extends ActionBarActivity {
              * Logic: This method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
              * Example Call: called automatically when the text is changing
              *
-             */
+             *//*
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!rightMotorVelocityText.getText().toString().isEmpty() && rightMotorVelocityText.getText().toString().length()<4) {
+               *//* if (!rightMotorVelocityText.getText().toString().isEmpty() && rightMotorVelocityText.getText().toString().length()<4) {
                     int value = Integer.parseInt(rightMotorVelocityText.getText().toString());
 
                     if (value <= 255) {
@@ -267,23 +271,23 @@ public class VelocityActivity extends ActionBarActivity {
                         rightMotorVelocitySeekBar.setProgress(0);
                         rightMotorVelocityText.setText("0");
                     }
-                }
+                }*//*
             }
 
-            /**
+            *//**
              *
              * Function Name: afterTextChanged
              * Input: the editable text s
              * Logic: This method is called to notify you that, somewhere within s, the text has been changed.
              * Example Call: called automatically after the text has been changed
              *
-             */
+             *//*
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-
+*/
         // assigns the OnClickListener with the setButton
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override

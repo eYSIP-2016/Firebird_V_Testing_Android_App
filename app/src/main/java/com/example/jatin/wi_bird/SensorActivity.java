@@ -37,30 +37,15 @@ public class SensorActivity extends ActionBarActivity {
     //for debugging
     final String TAG = "Wi-bird";
 
-    String[] sName={"IR Proximity 1","IR Proximity 2","IR Proximity 3",
-            "IR Proximity 4","IR Proximity 5","IR Proximity 6","IR Proximity 7","IR Proximity 8"
-            ,"Left White Line Sensor",
-            "Middle White Line Sensor","Right Right Line Sensor","Sharp IR 1","Sharp IR 2",
-            "Sharp IR 3","Sharp IR 4","Sharp IR 5"};
+    TextView IRProximity1,IRProximity2,IRProximity3,
+            IRProximity4,IRProximity5,IRProximity6,IRProximity7,IRProximity8
+            ,LeftWhiteLineSensor,
+            MiddleWhiteLineSensor,RightWhiteLineSensor,SharpIR1,SharpIR2,
+            SharpIR3,SharpIR4,SharpIR5;
     String[] sValue={"value","value","value","value","value","value","value",
             "value","value","value","value","value","value","value","value","value"};
-    Integer[] imgid={R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_proximity_sensor,
-            R.drawable.ic_white_light_sensor,
-            R.drawable.ic_white_light_sensor,
-            R.drawable.ic_white_light_sensor,
-            R.drawable.ic_sharp_sensor,
-            R.drawable.ic_sharp_sensor,
-            R.drawable.ic_sharp_sensor,
-            R.drawable.ic_sharp_sensor,
-            R.drawable.ic_sharp_sensor};
 
+    TextView[] t = new TextView[16];
     //to store object of BtConnection
     BtConnection mBtConnection;
 
@@ -77,23 +62,43 @@ public class SensorActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sensor);
         Log.d("Wi-bird", "Checking...");
         toolbar = (Toolbar) findViewById(R.id.app_bar);
-        listView = (ListView) findViewById(R.id.list);
+
+
+        t[0] = (TextView)findViewById(R.id.proximity_sensor_value1);
+        t[1] = (TextView)findViewById(R.id.proximity_sensor_value2);
+        t[2] = (TextView)findViewById(R.id.proximity_sensor_value3);
+        t[3] = (TextView)findViewById(R.id.proximity_sensor_value4);
+        t[4] = (TextView)findViewById(R.id.proximity_sensor_value5);
+        t[5] = (TextView)findViewById(R.id.proximity_sensor_value6);
+        t[6] = (TextView)findViewById(R.id.proximity_sensor_value7);
+        t[7] = (TextView)findViewById(R.id.proximity_sensor_value8);
+        t[8] = (TextView)findViewById(R.id.white_sensor_value1);
+        t[9] = (TextView)findViewById(R.id.white_sensor_value2);
+        t[10] = (TextView)findViewById(R.id.white_sensor_value3);
+        t[11] = (TextView)findViewById(R.id.sharp_sensor_value1);
+        t[12] = (TextView)findViewById(R.id.sharp_sensor_value2);
+        t[13] = (TextView)findViewById(R.id.sharp_sensor_value3);
+        t[14] = (TextView)findViewById(R.id.sharp_sensor_value4);
+        t[15] = (TextView)findViewById(R.id.sharp_sensor_value5);
+
+
+        //listView = (ListView) findViewById(R.id.list);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         si = new ArrayList<SensorItem>();
-        for(int i=0; i<16;i++)
+        /*for(int i=0; i<16;i++)
         {
 
             SensorItem s=new SensorItem(sName[i],sValue[i],imgid[i]);
             si.add(s);
         }
-        array = new SensorItem[16];
+        array = new SensorItem[16];*/
 
 
 
-        SensorAdapter adapter=new SensorAdapter(this,R.layout.listview_each_item,si.toArray(array));
-        listView.setAdapter(adapter);
+        //SensorAdapter adapter=new SensorAdapter(this,R.layout.listview_each_item,si.toArray(array));
+        //listView.setAdapter(adapter);
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
@@ -184,7 +189,7 @@ public class SensorActivity extends ActionBarActivity {
         // stores the value read from the input stream
         int m;
         // delay between two sensor values
-        long t= 60;
+        long time= 60;
 
         public void run()
         {
@@ -195,22 +200,23 @@ public class SensorActivity extends ActionBarActivity {
                 {
                     for(int i=0;i<16;i++)
                     {
-                        Thread.sleep(t);
+                        Thread.sleep(time);
                         mBtConnection.sendData(dataValuesSend[i]);
                         // reads the sensors value
                         m = mBtConnection.readData();
-                        Log.d(TAG, "Sensors readTghread ir1" + m);
+                        Log.d(TAG, "Sensors readThread ir1" + m);
                         //final int finalI = i;
-                        array[i].sensor_value=String.valueOf(m);
-                        /*runOnUiThread(new Runnable() {
+                        t[i].setText(t[i].getText().toString().trim()+" "+String.valueOf(m)+" mm");
+
+                        runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 // This code will always run on the UI thread, therefore is safe to modify UI elements.
-
+                                //t[i].setText(t[i].getText().toString().trim()+" "+String.valueOf(m)+" mm");
                                 Log.d(TAG, "Sensors readTghread ir1 update");
                             }
-                        });*/
-                        Thread.sleep(t);
+                        });
+                        Thread.sleep(time);
                     }
 
 
