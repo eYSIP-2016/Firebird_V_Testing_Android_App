@@ -85,7 +85,10 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
                 context.startActivity(i);
             } else if (pos == 1) {
                 i = new Intent(context, SensorActivity.class);
+                //i = new Intent();
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                //i.setClassName(context,"com.example.jatin.wi_bird.SensorActivity");
                 context.startActivity(i);
             } else if(pos == 2){
                 i = new Intent(context, VelocityActivity.class);

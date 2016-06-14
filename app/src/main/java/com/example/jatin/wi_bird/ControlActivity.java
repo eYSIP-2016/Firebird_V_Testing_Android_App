@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -122,6 +123,7 @@ public class ControlActivity extends ActionBarActivity {
         Log.d(TAG, "Custom Mode onResume()");
     }
 
+
     /**
      * Function Name: onPause
      * Input: None
@@ -153,6 +155,7 @@ public class ControlActivity extends ActionBarActivity {
             mBound = false;
         }
     }
+
 
     /**
      * Defines callbacks for service binding, passed to bindService()
@@ -214,7 +217,7 @@ public class ControlActivity extends ActionBarActivity {
                     forwardThread.setPriority(1);
                     forwardThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -228,7 +231,7 @@ public class ControlActivity extends ActionBarActivity {
                     backwardThread.setPriority(1);
                     backwardThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
         rotate_right.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +244,7 @@ public class ControlActivity extends ActionBarActivity {
                     rightThread.setPriority(1);
                     rightThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
         rotate_left.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +257,7 @@ public class ControlActivity extends ActionBarActivity {
                     leftThread.setPriority(1);
                     leftThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
         stop.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +267,7 @@ public class ControlActivity extends ActionBarActivity {
                     stopAllThreads();
                     mBtConnection.sendData(moveStop);
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -278,7 +281,7 @@ public class ControlActivity extends ActionBarActivity {
                     buzzerOnThread.setPriority(1);
                     buzzerOnThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -292,74 +295,10 @@ public class ControlActivity extends ActionBarActivity {
                     buzzerOffThread.setPriority(1);
                     buzzerOffThread.start();
                 } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), " Connect to Robot First ", Toast.LENGTH_SHORT).show();
             }
         });
-       /* rotate_left_90.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isBound()) {
-                    stopAllThreads();
-                    bRotateLeft_90 = true;
-                    Thread left_90Thread = new Thread(new Left_90Thread());
-                    left_90Thread.setPriority(1);
-                    left_90Thread.start();
-                } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
-            }
-        });
-        rotate_right_90.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isBound()) {
-                    stopAllThreads();
-                    bRotateRight_90 = true;
-                    Thread right_90Thread = new Thread(new Right_90Thread());
-                    right_90Thread.setPriority(1);
-                    right_90Thread.start();
-                } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
-            }
-        });
-        forward_100.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isBound()) {
-                    stopAllThreads();
-                    bForward_100 = true;
-                    Thread forward_100Thread = new Thread(new Forward_100Thread());
-                    forward_100Thread.setPriority(1);
-                    forward_100Thread.start();
-                } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
-            }
-        });
-        backward_100.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isBound()) {
-                    stopAllThreads();
-                    bBackward_100 = true;
-                    Thread backward_100Thread = new Thread(new Backward_100Thread());
-                    backward_100Thread.setPriority(1);
-                    backward_100Thread.start();
-                } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
-            }
-        });
-        rotate_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isBound()) {
-                    stopAllThreads();
-                    bRotateBack = true;
-                    Thread rotateBackThread = new Thread(new RotateBackThread());
-                    rotateBackThread.setPriority(1);
-                    rotateBackThread.start();
-                } else
-                    Toast.makeText(getApplicationContext(), "Connect to Robot First", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+
 
     }
 
@@ -462,75 +401,6 @@ public class ControlActivity extends ActionBarActivity {
         }
     }
 
-   /* // Thread to make the bot rotate left 90
-    private class Left_90Thread implements Runnable {
-        public void run() {
-            while (bRotateLeft_90) {
-                try {
-                    mBtConnection.sendData(rotateLeft90);
-
-                } catch (Exception ex) {
-                    Log.e(TAG, "Exception ", ex);
-                }
-            }
-        }
-    }
-
-    // Thread to make the bot rotate right 90
-    private class Right_90Thread implements Runnable {
-        public void run() {
-            while (bRotateRight_90) {
-                try {
-                    mBtConnection.sendData(rotateRight90);
-
-                } catch (Exception ex) {
-                    Log.e(TAG, "Exception ", ex);
-                }
-            }
-        }
-    }
-
-    // Thread to  make the bot move forward 100
-    private class Forward_100Thread implements Runnable {
-        public void run() {
-            while (bForward_100) {
-                try {
-                    mBtConnection.sendData(moveForward100);
-
-                } catch (Exception ex) {
-                    Log.e(TAG, "Exception ", ex);
-                }
-            }
-        }
-    }
-
-    // Thread to make the bot move backward 100
-    private class Backward_100Thread implements Runnable {
-        public void run() {
-            while (bBackward_100) {
-                try {
-                    mBtConnection.sendData(moveBackward100);
-
-                } catch (Exception ex) {
-                    Log.e(TAG, "Exception ", ex);
-                }
-            }
-        }
-    }
-
-    // Thread to make the bot rotate back
-    private class RotateBackThread implements Runnable {
-        public void run() {
-            while (bRotateBack) {
-                try {
-                    mBtConnection.sendData(rotateBack);
-
-                } catch (Exception ex) {
-                    Log.e(TAG, "Exception ", ex);
-                }
-            }
-        }
-    }*/
 
 
     public void stopAllThreads() {
@@ -570,10 +440,10 @@ public class ControlActivity extends ActionBarActivity {
 
 
         if (id == android.R.id.home) {
-            Intent intent = new Intent(ControlActivity.this, MainActivity.class);
+            /*Intent intent = new Intent(ControlActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            //NavUtils.navigateUpFromSameTask(this);
+            startActivity(intent);*/
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

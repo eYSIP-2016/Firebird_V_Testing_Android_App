@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 
 
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -306,7 +307,7 @@ public class VelocityActivity extends ActionBarActivity {
                     leftMotorVelocity = leftMotorVelocity / 2;
                 }
                 // sends the calculated left motor velocity to the output stream in the form of string
-                mBtConnection.sendData(String.valueOf(leftMotorVelocity));
+                mBtConnection.sendData(String.valueOf((char) leftMotorVelocity));
                 // if entered right velocity is less than 127 then it sends "A" to the output stream
                 if (rightMotorVelocity <= 127) {
                     mBtConnection.sendData("A");
@@ -360,6 +361,7 @@ public class VelocityActivity extends ActionBarActivity {
         }
     }
 
+
     /**
      * Function Name: onResumne
      * Input: None
@@ -370,7 +372,7 @@ public class VelocityActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     /**
@@ -431,10 +433,10 @@ public class VelocityActivity extends ActionBarActivity {
 
 
         if (id == android.R.id.home) {
-            Intent intent = new Intent(VelocityActivity.this,MainActivity.class);
+            /*Intent intent = new Intent(VelocityActivity.this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            //NavUtils.navigateUpFromSameTask(this);
+            startActivity(intent);*/
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

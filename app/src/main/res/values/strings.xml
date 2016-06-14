@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">Wi-bird</string>
-    <string name="title_activity_main">Wi-bird</string>
+    <string name="app_name">Bluebird</string>
+    <string name="title_activity_main">Bluebird</string>
     <string name="title_activity_control">Control Option</string>
     <!--<string name="title_activity_sensor">Sensor Values</string>-->
     <string name="title_activity_velocity">Set Velocity</string>
@@ -11,7 +11,7 @@
     <string name="action_net">Connect To</string>
 
     <string name="drawer_open">Select</string>
-    <string name="drawer_close">Wi-bird</string>
+    <string name="drawer_close">Bluebird</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <string name="hello_world">Hello world!</string>

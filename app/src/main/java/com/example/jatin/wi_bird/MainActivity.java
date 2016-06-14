@@ -85,10 +85,17 @@ public class MainActivity extends ActionBarActivity {
         // Bind to LocalService
         Intent intent = new Intent(this, BtConnection.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-        /*if(mBtConnection.connect())
-        {
-            setStatus("Connected to " + mBtConnection.mDevice.getName());
-        }*/
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        // Bind to LocalService
+        Intent intent = new Intent(this, BtConnection.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
     }
 
 
@@ -104,11 +111,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         // Unbind from the service
-       /* if (mBound) {
+        if (mBound) {
             unbindService(mConnection);
-            mBound = false;
-            Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
-        }*/
+            mBound = true;
+            //Toast.makeText(getApplicationContext(), mBound+"", Toast.LENGTH_LONG).show();
+        }
     }
 
     /**
@@ -153,6 +160,8 @@ public class MainActivity extends ActionBarActivity {
         }
     };
 
+
+
     /**
      * Function Name: onActivityResult
      * Input: requestCode --> The integer request code originally supplied to startActivityForResult(), allowing you to identify who this result came from.
@@ -178,7 +187,7 @@ public class MainActivity extends ActionBarActivity {
                     // When the request to enable Bluetooth returns
                     if (resultCode == Activity.RESULT_CANCELED) {
                         // SensorItem did not enable Bluetooth or an error occurred
-                        Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving Wi-bird", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), " Bluetooth not enabled. Leaving Bluebird ", Toast.LENGTH_SHORT).show();
                         finish();
                     }
             }
@@ -262,7 +271,7 @@ public class MainActivity extends ActionBarActivity {
             new CountDownTimer(2000, 1000) {
 
                 public void onTick(long millisUntilFinished) {
-                    Toast.makeText(getApplication(),"fetching paired devices...",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication()," Fetching paired devices ",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -273,14 +282,10 @@ public class MainActivity extends ActionBarActivity {
                 }
             }.start();
         }
-        if(id == R.id.wifi) {
-            if (!wifi.isWifiEnabled()) {
-                wifi.setWifiEnabled(true);
-            }
-        }
+
         if(id == R.id.disconnect) {
             mBtConnection.disconnect();
-            Toast.makeText(getApplication(), "Disconnected",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplication(), " Disconnected ",Toast.LENGTH_LONG).show();
         }
 
 

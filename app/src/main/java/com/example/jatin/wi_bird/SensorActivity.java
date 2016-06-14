@@ -123,14 +123,14 @@ public class SensorActivity extends ActionBarActivity {
         // Bind to LocalService
         Intent intent = new Intent(this, BtConnection.class);
         getApplicationContext().bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-
+        readSensors = true;
 
 
     }
 
     /**
      *
-     * Function Name: onResumne
+     * Function Name: onResume
      * Input: None
      * Output: sets the screen orientation in Portrait mode and set the variable readSensors to true to start reading the value of sensors
      * Logic: calls the setRequestedOrientation(Orientation) method to set the screen orientation
@@ -141,7 +141,7 @@ public class SensorActivity extends ActionBarActivity {
     public void onResume()
     {
         super.onResume();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         readSensors = true;
     }
 
@@ -158,8 +158,10 @@ public class SensorActivity extends ActionBarActivity {
     public void onPause()
     {
         super.onPause();
-        readSensors = false;
+        readSensors = true;
     }
+
+
 
     /**
      *
@@ -204,16 +206,23 @@ public class SensorActivity extends ActionBarActivity {
                         mBtConnection.sendData(dataValuesSend[i]);
                         // reads the sensors value
                         m = mBtConnection.readData();
-                        Log.d(TAG, "Sensors readThread ir1" + m);
+                        //Log.d(TAG, "Sensors readThread ir1" + m);
                         //final int finalI = i;
-                        t[i].setText(t[i].getText().toString().trim()+" "+String.valueOf(m)+" mm");
 
+                        final int a=i;
+                       /* runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //t[a].setText(t[a].getText().toString().trim()+" "+String.valueOf(m)+" mm");
+                                t[a].setText(String.valueOf(m));
+                                Log.d(TAG, "Sensors readThread ir1 update");
+                            }
+                        });*/
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                //t[i].setText(t[i].getText().toString().trim()+" "+String.valueOf(m)+" mm");
-                                Log.d(TAG, "Sensors readTghread ir1 update");
+                                t[a].setText(t[a].getText().toString().trim()+" "+String.valueOf(m));
                             }
                         });
                         Thread.sleep(time);
@@ -247,6 +256,7 @@ public class SensorActivity extends ActionBarActivity {
         // Unbind from the service
         if (mBound)
         {
+            stopThread();
             getApplicationContext().unbindService(mConnection);
             mBound = false;
         }
@@ -317,6 +327,15 @@ public class SensorActivity extends ActionBarActivity {
         }
         return mBound;
     }
+    public void stopThread(){
+        if(Thread.currentThread() != null)
+        {
+
+            Thread.currentThread().interrupt();
+            mBound = false;
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -340,10 +359,11 @@ public class SensorActivity extends ActionBarActivity {
         }*/
         if(id==android.R.id.home)
         {
-            Intent intent = new Intent(SensorActivity.this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            //NavUtils.navigateUpFromSameTask(this);
+            //Intent intent = new Intent(SensorActivity.this, MainActivity.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //intent.setClassName(this,"com.example.jatin.wi_bird.MainActivity");
+            //startActivity(intent);
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

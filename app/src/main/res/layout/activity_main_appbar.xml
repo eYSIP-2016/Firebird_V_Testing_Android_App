@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:id="@+id/layout"
-                android:background="@color/text_head1">
+                android:background="@color/back">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -38,12 +38,13 @@
                 <RelativeLayout
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:paddingBottom="20dp">
+                    android:paddingBottom="20dp"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin">
 
                 <TextView
                     style="@style/MyTextStyle"
                     android:id="@+id/main_content"
-
                     android:text="@string/main_activity_content"/>
 
 
