@@ -12,6 +12,8 @@ import android.os.IBinder;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,13 +39,11 @@ public class SensorActivity extends ActionBarActivity {
     //for debugging
     final String TAG = "Wi-bird";
 
-    TextView IRProximity1,IRProximity2,IRProximity3,
-            IRProximity4,IRProximity5,IRProximity6,IRProximity7,IRProximity8
-            ,LeftWhiteLineSensor,
-            MiddleWhiteLineSensor,RightWhiteLineSensor,SharpIR1,SharpIR2,
-            SharpIR3,SharpIR4,SharpIR5;
-    String[] sValue={"value","value","value","value","value","value","value",
-            "value","value","value","value","value","value","value","value","value"};
+
+    String[] SensorTextView={"Sharp Sensor 1","Sharp Sensor 2","Sharp Sensor 3","Sharp Sensor 4","Sharp Sensor 5",
+            "Proximity Sensor 1","Proximity Sensor 2",
+            "Proximity Sensor 3","Proximity Sensor 4","Proximity Sensor 5","Proximity Sensor 6","Proximity Sensor 7",
+            "Proximity Sensor 8","White Line Sensor 1","White Line Sensor 2","White Line Sensor 3"};
 
     TextView[] t = new TextView[16];
     //to store object of BtConnection
@@ -83,8 +83,12 @@ public class SensorActivity extends ActionBarActivity {
 
 
         //listView = (ListView) findViewById(R.id.list);
+        SpannableString s = new SpannableString("Sensor Values");
+        s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(s);
 
         si = new ArrayList<SensorItem>();
         /*for(int i=0; i<16;i++)
@@ -222,7 +226,7 @@ public class SensorActivity extends ActionBarActivity {
                             @Override
                             public void run() {
                                 // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                                t[a].setText(t[a].getText().toString().trim()+" "+String.valueOf(m));
+                                t[a].setText(SensorTextView[a]+": "+String.valueOf(m));
                             }
                         });
                         Thread.sleep(time);

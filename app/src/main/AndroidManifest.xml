@@ -19,6 +19,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +30,8 @@
         </activity>
         <activity
             android:name=".ControlActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_control"
             android:parentActivityName=".MainActivity">
 
@@ -40,6 +44,8 @@
         <activity
             android:name=".SensorActivity"
             android:label="@string/title_activity_sensor"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity">
 
 
@@ -50,6 +56,8 @@
         </activity>
         <activity
             android:name=".VelocityActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_velocity"
             android:parentActivityName=".MainActivity" >
 
@@ -60,11 +68,15 @@
         </activity>
         <activity
             android:name=".BaseActivity"
-            android:label="@string/title_activity_base" >
+            android:label="@string/title_activity_base"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".DeviceListActivity"
-            android:label="@string/title_activity_device_list" >
+            android:label="@string/title_activity_device_list"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <service
             android:name=".BtConnection"

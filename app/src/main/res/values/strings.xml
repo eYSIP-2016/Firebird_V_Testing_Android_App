@@ -73,6 +73,8 @@
         \nTop Speed: 24 cm / second
         \nWheel Diameter: 51mm
         \nPosition encoder: 30 pulses per revolution\nPosition encoder resolution: 5.44 mm</string>
+    <string name="bluetooth">Connect via Bluetooth</string>
+    <string name="disconnect">Disconnect</string>
 
 
 </resources>

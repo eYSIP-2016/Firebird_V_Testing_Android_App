@@ -122,8 +122,7 @@
                     android:elevation="2dp"
                     android:src="@drawable/ic_buzzer_off" />
 
-                <TextView
-                    style=""
+                <com.example.jatin.wi_bird.MyCustomTextView
                     android:id="@+id/buzzer_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

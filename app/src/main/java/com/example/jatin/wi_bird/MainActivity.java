@@ -1,6 +1,7 @@
 package com.example.jatin.wi_bird;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.ComponentName;
@@ -8,7 +9,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.ActivityInfo;
+
+import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,12 +20,15 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.PopupMenu;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.logging.Handler;
@@ -33,8 +38,6 @@ public class MainActivity extends ActionBarActivity {
 
     //for debugging
     final String TAG = "Wi-bird";
-
-    String conn_blue = "Connect via Bluetooth", conn_wifi = "Connect via Wi-fi", dis = "Disconnect";
     private Toolbar toolbar;
     NavigationDrawerFragment df;
 
@@ -49,16 +52,22 @@ public class MainActivity extends ActionBarActivity {
     BtConnection mBtConnection;
 
     boolean mBound = false;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_appbar);
 
+        activity = this;
+        SpannableString s = new SpannableString("Bluebird");
+        s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(s);
 
         df = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         df.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
@@ -208,24 +217,38 @@ public class MainActivity extends ActionBarActivity {
         // Get the device MAC address
         String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
         // Get the BluetoothDevice object
-        BluetoothDevice device = mAdapter.getRemoteDevice(address);
-        Toast.makeText(this, "Connecting...", Toast.LENGTH_LONG).show();
+        final BluetoothDevice device = mAdapter.getRemoteDevice(address);
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                Toast.makeText(getApplicationContext(), "Connecting...", Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         mBtConnection = new BtConnection(this, device);
         if (mBound) {
             //mBtConnection.connect();
             try {
-                Log.d(TAG, "Connection Started...");
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                        Log.d(TAG, "Connection Started...");
+                        /** Bluetooth connect function returns true if connection is successful, else false. */
+                        if (!mBtConnection.connect()) {
+                            Toast.makeText(getApplicationContext(), " No connection established ", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            Toast.makeText(getApplicationContext(), " Connection established ", Toast.LENGTH_SHORT).show();
+                            setStatus("Connected to " + device.getName());
 
-                /** Bluetooth connect function returns true if connection is successful, else false. */
-                if (!mBtConnection.connect()) {
-                    Toast.makeText(this, " No connection established ", Toast.LENGTH_SHORT).show();
-                    return;
-                } else {
-                    Toast.makeText(this, " Connection established ", Toast.LENGTH_SHORT).show();
-                    setStatus("Connected to " + device.getName());
-                }
-                Log.d(TAG, "Connection Successful");
+                        }
+                        Log.d(TAG, "Connection Successful");
+                    }
+                    });
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.e(TAG, "Connection Failed");
@@ -242,8 +265,14 @@ public class MainActivity extends ActionBarActivity {
      */
     public void setStatus(String status) {
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setSubtitle(status);
+        if (actionBar != null){
+            SpannableString s = new SpannableString(status);
+            s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            actionBar.setSubtitle(s);
+
+        }
+
 
     }
 
@@ -252,6 +281,20 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        SpannableString title1 = new SpannableString(getString(R.string.bluetooth));
+        title1.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, title1.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        SpannableString title2 = new SpannableString(getString(R.string.disconnect));
+        title2.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, title2.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        MenuItem menuItem1 = menu.findItem(R.id.bluetooth);
+        MenuItem menuItem2 = menu.findItem(R.id.disconnect);
+
+        menuItem1.setTitle(title1);
+        menuItem2.setTitle(title2);
+
         return true;
     }
 
@@ -265,27 +308,40 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.bluetooth) {
+
             if (!mAdapter.isEnabled()) {
                 mAdapter.enable();
             }
-            new CountDownTimer(2000, 1000) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                    new CountDownTimer(2000, 1000) {
 
-                public void onTick(long millisUntilFinished) {
-                    Toast.makeText(getApplication()," Fetching paired devices ",Toast.LENGTH_LONG).show();
+                        public void onTick(long millisUntilFinished) {
+                            Toast.makeText(getApplication(), " Fetching paired devices... ", Toast.LENGTH_LONG).show();
 
+                        }
+
+                        public void onFinish() {
+                            //Launch the DeviceListActivity to see devices
+                            Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
+                            startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+                        }
+                    }.start();
                 }
-
-                public void onFinish() {
-                    //Launch the DeviceListActivity to see devices
-                    Intent serverIntent = new Intent(getApplicationContext(), DeviceListActivity.class);
-                    startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
-                }
-            }.start();
+            });
         }
 
         if(id == R.id.disconnect) {
             mBtConnection.disconnect();
-            Toast.makeText(getApplication(), " Disconnected ",Toast.LENGTH_LONG).show();
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                    Toast.makeText(getApplication(), " Disconnected ", Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
 
@@ -295,20 +351,23 @@ public class MainActivity extends ActionBarActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            exitByBackKey();
-            //moveTaskToBack(false);
+            //exitByBackKey();
+            showAlertDialog();
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
 
-    protected void exitByBackKey() {
+   /* protected void exitByBackKey() {
         final boolean a = ((MyApplication) this.getApplication()).getEarlyBluetoothState();
         final boolean b = ((MyApplication) this.getApplication()).getEarlyWifiState();
+        SpannableString exit = new SpannableString("Do you want to exit application?");
+        exit.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, exit.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        AlertDialog alertbox = new AlertDialog.Builder(this)
-                .setMessage("Do you want to exit application?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+        new AlertDialog.Builder(this)
+                .setMessage(exit)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                     // do something when the button is clicked
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -323,7 +382,7 @@ public class MainActivity extends ActionBarActivity {
                         //  close();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
 
                     // do something when the button is clicked
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -331,6 +390,48 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .show();
 
+    }*/
+
+    private void showAlertDialog(){
+        final boolean a = ((MyApplication) this.getApplication()).getEarlyBluetoothState();
+        final boolean b = ((MyApplication) this.getApplication()).getEarlyWifiState();
+        SpannableString exit = new SpannableString("Do you want to exit application?");
+        exit.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, exit.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        builder.setMessage(exit);
+
+        builder .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (!a) {
+                            mAdapter.disable();
+                        }
+                        if (!b) {
+                            wifi.setWifiEnabled(false);
+                        }
+                        finish();
+                        //  close();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog alertdialog = builder.create();
+        alertdialog.setOnShowListener(new DialogInterface.OnShowListener() {
+
+            @Override
+            public void onShow(DialogInterface dialog) {
+                Typeface c = Typeface.createFromAsset(getAssets(), "fonts/Classic Robot Condensed.ttf");
+                (alertdialog.getButton(Dialog.BUTTON_POSITIVE)).setTypeface(c);
+                (alertdialog.getButton(Dialog.BUTTON_NEGATIVE)).setTypeface(c);
+            }
+        });
+        alertdialog.show();
     }
 
 }

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     >
 
-    <TextView
+    <com.example.jatin.wi_bird.MyCustomTextView
         android:id="@+id/title_paired_devices"
         android:layout_width="match_parent"
         android:layout_height="@dimen/device_list_head_height"

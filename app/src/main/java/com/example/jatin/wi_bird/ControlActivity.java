@@ -12,6 +12,8 @@ import android.os.IBinder;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +26,7 @@ import android.widget.Toast;
 
 
 public class ControlActivity extends ActionBarActivity {
-    String conn_blue = "Connect via Bluetooth", conn_wifi = "Connect via Wi-fi", dis = "Disconnect";
+
     private Toolbar toolbar;
     BluetoothAdapter mAdapter;
     //for debugging
@@ -35,11 +37,10 @@ public class ControlActivity extends ActionBarActivity {
     boolean mBound = false;
     WifiManager wifi;
     TextView buzzer_status;
-    private ImageView forward, forward_100, backward, backward_100, stop, buzzer_on, buzzer_off,
-            rotate_left, rotate_left_90, rotate_right, rotate_right_90, rotate_back;
+    private ImageView forward,backward,stop, buzzer_on, buzzer_off,
+            rotate_left, rotate_right;
     //variables for stopping the different threads
-    private boolean bForward, bBackward, bRotateLeft_90, bRotateRight_90, bBuzzerOn, bBuzzerOFF,
-            bForward_100, bBackward_100, bRotateLeft, bRotateRight, bRotateBack;
+    private boolean bForward, bBackward, bBuzzerOn, bBuzzerOFF, bRotateLeft, bRotateRight;
 
 
     //Constants for various motions
@@ -50,34 +51,29 @@ public class ControlActivity extends ActionBarActivity {
     final String moveStop = "e";
     final String makeBuzzerOn = "f";
     final String makeBuzzerOff = "g";
-    final String moveForward100 = "C";
-    final String moveBackward100 = "D";
-    final String rotateLeft90 = "E";
-    final String rotateRight90 = "F";
-    final String rotateBack = "G";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
-
         forward = (ImageView) findViewById(R.id.forward);
-        //forward_100 = (Button) findViewById(R.id.forward_100);
         backward = (ImageView) findViewById(R.id.backward);
-        //backward_100 = (Button) findViewById(R.id.backward_100);
         stop = (ImageView) findViewById(R.id.stop);
         buzzer_on = (ImageView) findViewById(R.id.buzzer_on);
         buzzer_off = (ImageView) findViewById(R.id.buzzer_off);
         rotate_left = (ImageView) findViewById(R.id.rotate_left);
-        //rotate_left_90 = (Button) findViewById(R.id.rotate_left_90);
         rotate_right = (ImageView) findViewById(R.id.rotate_right);
-        //rotate_right_90 = (Button) findViewById(R.id.rotate_right_90);
-        //rotate_back = (Button) findViewById(R.id.rotate_back);
         buzzer_status = (TextView)findViewById(R.id.buzzer_status);
+
+        SpannableString s = new SpannableString("Control Options");
+        s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(s);
 
         buzzer_on.setVisibility(View.VISIBLE);
         buzzer_off.setVisibility(View.INVISIBLE);
@@ -404,8 +400,7 @@ public class ControlActivity extends ActionBarActivity {
 
 
     public void stopAllThreads() {
-        bForward = bBackward = bRotateLeft_90 = bRotateRight_90 = bBuzzerOFF = bBuzzerOn =
-                bForward_100 = bBackward_100 = bRotateLeft = bRotateRight = bRotateBack = false;
+        bForward = bBackward = bBuzzerOFF = bBuzzerOn = bRotateLeft = bRotateRight= false;
     }
 
     /**
@@ -440,9 +435,6 @@ public class ControlActivity extends ActionBarActivity {
 
 
         if (id == android.R.id.home) {
-            /*Intent intent = new Intent(ControlActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);*/
             NavUtils.navigateUpFromSameTask(this);
             return true;
         }

@@ -22,7 +22,7 @@
             android:paddingBottom="@dimen/activity_vertical_margin">
 
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/sharp_sensor_head"
                 android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:text="SHARP SENSOR VALUES"
                 android:textColor="@color/text_sensor">
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
             <ImageView
                 android:id="@+id/ic_sharp_sensor"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="30dp"
                 android:src="@drawable/ic_sharp_sensor"></ImageView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/sharp_sensor_value1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,12 +55,12 @@
                 android:background="@color/text_head1"
                 android:gravity="center"
                 android:text="Sharp Sensor 1"
-                android:textColor="@color/text_sensor"></TextView>
+                android:textColor="@color/text_sensor"></com.example.jatin.wi_bird.MyCustomTextView>
 
 
 
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/sharp_sensor_value2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,9 +75,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/sharp_sensor_value3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,9 +92,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/sharp_sensor_value4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,9 +109,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/sharp_sensor_value5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,10 +126,10 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/proximity_sensor_head"
                 android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
             <ImageView
                 android:id="@+id/ic_proximity_sensor"
@@ -152,7 +152,7 @@
                 android:layout_marginTop="30dp"
                 android:src="@drawable/ic_proximity_sensor"></ImageView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,9 +167,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,9 +184,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -201,9 +201,9 @@
                 android:textColor="@color/text_sensor"
                >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,9 +218,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -235,9 +235,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -252,9 +252,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -269,9 +269,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/proximity_sensor_value8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -286,10 +286,10 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/white_sensor_head"
                 android:layout_width="match_parent"
@@ -301,7 +301,7 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
             <ImageView
                 android:id="@+id/ic_white_line_sensor"
@@ -313,7 +313,7 @@
                 android:src="@drawable/ic_white_line_sensor"></ImageView>
 
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/white_sensor_value1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -328,9 +328,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/white_sensor_value2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -345,9 +345,9 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/white_sensor_value3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -362,7 +362,7 @@
                 android:textColor="@color/text_sensor"
                 >
 
-            </TextView>
+            </com.example.jatin.wi_bird.MyCustomTextView>
 
 
         </RelativeLayout>

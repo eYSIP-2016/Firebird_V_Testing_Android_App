@@ -15,7 +15,7 @@
         android:layout_below="@+id/app_bar"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
-        <TextView
+        <com.example.jatin.wi_bird.MyCustomTextView
             style="@style/TextAppearance.AppCompat.Headline"
             android:id="@+id/velocity_head"
             android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             >
-        </TextView>
+        </com.example.jatin.wi_bird.MyCustomTextView>
 
         <LinearLayout
             android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 style="@style/TextAppearance.AppCompat"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -48,7 +48,7 @@
                 android:textSize="@dimen/activity_vertical_margin"
                 android:gravity="center"
                 android:text="LEFT MOTOR"/>
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 style="@style/TextAppearance.AppCompat"
                 android:textSize="@dimen/activity_vertical_margin"
                 android:layout_width="0dp"
@@ -114,7 +114,7 @@
 
             </LinearLayout>
 
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/left_velocity_text"
                 android:layout_width="0dp"
                 android:layout_weight="2"
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content">
 
         </LinearLayout>
-            <TextView
+            <com.example.jatin.wi_bird.MyCustomTextView
                 android:id="@+id/right_velocity_text"
                 android:layout_width="0dp"
                 android:layout_weight="2"

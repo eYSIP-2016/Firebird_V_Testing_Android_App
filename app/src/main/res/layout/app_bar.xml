@@ -7,3 +7,5 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 </android.support.v7.widget.Toolbar>
+
+    <!--app:titleTextColor="@color/red"-->

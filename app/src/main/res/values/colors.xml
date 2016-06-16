@@ -13,7 +13,7 @@
     <color name="colorHighlight">#B6B6B6</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
-
+    <color name="red">#FC1501</color>
 
     <color name="genre">#666666</color>
     <color name="year">#888888</color>

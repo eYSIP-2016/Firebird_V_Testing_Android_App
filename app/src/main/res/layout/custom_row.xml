@@ -21,7 +21,7 @@
             android:layout_marginRight="@dimen/image_right"
             android:src="@drawable/ic_control" />
 
-        <TextView
+        <com.example.jatin.wi_bird.MyCustomTextView
             android:id="@+id/listText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

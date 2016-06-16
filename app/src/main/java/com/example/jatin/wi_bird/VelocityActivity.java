@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -15,6 +16,8 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,9 +73,18 @@ public class VelocityActivity extends ActionBarActivity {
         // finds a view that was identified by the id right_velocity_seekbar from the XML that was processed in onCreate(Bundle)
         rightMotorVelocityText = (TextView) findViewById(R.id.right_velocity_text);
 
+        Typeface c = Typeface.createFromAsset(getAssets(), "fonts/Classic Robot Condensed.ttf");
+        setButton.setTypeface(c);
+
+        SpannableString s = new SpannableString("Set Velocity");
+        s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(s);
+
 
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
