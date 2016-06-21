@@ -1,3 +1,13 @@
+/*
+ *
+ * Project Name: Android App development for testing Firebird V Robot
+ * Author List: Jatin Mittal
+ * Filename: BtConnection.java
+ * Functions:BtConnection(Activity , BluetoothDevice,BtConnection(), connect(),getStream(),readData(),sendData(byte[] write_buffer),sendData(String write_buffer),disconnect())
+ * Objects:TAG, mBinder,MY_UUID,mActivity,mDevice,mmSocket,mInputStream,mOutputStream
+ *
+ */
+
 package com.example.jatin.wi_bird;
 
 import android.app.Activity;
@@ -13,11 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
-
-/**
- * Created by Jatin Mittal on 04-Jun-16.
- */
-
 
 /**
  * This class does all the work for setting up and managing Bluetooth

@@ -9,80 +9,107 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
-
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
-        tools:replace="android:icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:largeHeap="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity
-            android:name=".MainActivity"
+            android:name=".AboutUsActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_main"
+            android:parentActivityName=".ControlActivity"
+            android:screenOrientation="portrait" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.jatin.wi_bird.ControlActivity" />
+        </activity>
+        <activity
+            android:name=".ControlActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_control"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+        </activity>
+        <activity
+            android:name=".SensorActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_sensor"
+            android:parentActivityName=".ControlActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.jatin.wi_bird.ControlActivity" />
+        </activity>
+        <activity
+            android:name=".VelocityActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_velocity"
+            android:parentActivityName=".ControlActivity"
+            android:screenOrientation="portrait">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.jatin.wi_bird.ControlActivity" />
+        </activity>
+        <activity
+            android:name=".DeviceListActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_device_list"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".BtConnection"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".SplashScreenActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_main" >
+            android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".ControlActivity"
+            android:name=".WhiteLineSensorActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_control"
-            android:parentActivityName=".MainActivity">
-
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
+            android:parentActivityName=".ControlActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jatin.wi_bird.MainActivity" />
+                android:value="com.example.jatin.wi_bird.ControlActivity" />
         </activity>
+
         <activity
-            android:name=".SensorActivity"
-            android:label="@string/title_activity_sensor"
+            android:name=".SharpSensorActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity">
-
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
+            android:parentActivityName=".ControlActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jatin.wi_bird.MainActivity" />
+                android:value="com.example.jatin.wi_bird.ControlActivity" />
         </activity>
         <activity
-            android:name=".VelocityActivity"
+            android:name=".ProximitySensorActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_velocity"
-            android:parentActivityName=".MainActivity" >
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
+            android:parentActivityName=".ControlActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jatin.wi_bird.MainActivity" />
+                android:value="com.example.jatin.wi_bird.ControlActivity" />
         </activity>
-        <activity
-            android:name=".BaseActivity"
-            android:label="@string/title_activity_base"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".DeviceListActivity"
-            android:label="@string/title_activity_device_list"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
-        <service
-            android:name=".BtConnection"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
+
     </application>
 
 </manifest>

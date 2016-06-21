@@ -5,29 +5,25 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
-
-
-import android.support.v4.app.NavUtils;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-
 import com.triggertrap.seekarc.SeekArc;
+
+
+//import com.triggertrap.seekarc.SeekArc;
 
 
 public class VelocityActivity extends ActionBarActivity {
@@ -46,7 +42,7 @@ public class VelocityActivity extends ActionBarActivity {
     boolean mBound = false;
 
     // select the left and right motor velocity with the help of seekbar
-    SeekArc leftMotorVelocitySeekBar, rightMotorVelocitySeekBar;
+     SeekArc leftMotorVelocitySeekBar, rightMotorVelocitySeekBar;
 
     // Text box used to enter the velocity of both the wheels
     TextView leftMotorVelocityText, rightMotorVelocityText;
@@ -57,15 +53,17 @@ public class VelocityActivity extends ActionBarActivity {
     // stores the left and right motor velocity
     int leftMotorVelocity, rightMotorVelocity;
 
+    NavigationDrawerFragment df;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_velocity);
 
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        leftMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_left);
+           leftMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_left);
         // finds a view that was identified by the id right_velocity_seekbar from the XML that was processed in onCreate(Bundle)
-        rightMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_right);
+         rightMotorVelocitySeekBar = (SeekArc) findViewById(R.id.seekArc_right);
         // finds a view that was identified by the id set_button from the XML that was processed in onCreate(Bundle)
         setButton = (Button) findViewById(R.id.set_button);
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
@@ -77,7 +75,7 @@ public class VelocityActivity extends ActionBarActivity {
         setButton.setTypeface(c);
 
         SpannableString s = new SpannableString("Set Velocity");
-        s.setSpan(new TypefaceSpan(this,"Classic Robot Condensed.ttf"), 0, s.length(),
+        s.setSpan(new TypefaceSpan(this, "Classic Robot Condensed.ttf"), 0, s.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -85,12 +83,8 @@ public class VelocityActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(s);
 
-
-        mAdapter = BluetoothAdapter.getDefaultAdapter();
-        ((MyApplication) this.getApplication()).setEarlyBluetoothState(mAdapter.isEnabled());
-        wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        ((MyApplication) this.getApplication()).setEarlyWifiState(wifi.isWifiEnabled());
-
+        df = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        df.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
         // finds a view that was identified by the id left_velocity_seekbar from the XML that was processed in onCreate(Bundle)
 
@@ -99,41 +93,38 @@ public class VelocityActivity extends ActionBarActivity {
             // stores the current value of seek bar
             int progress = 0;
 
-            /**
-             *
-             * Function Name: onProgressChanged
-             * Input: seekBar --> The SeekBar whose progress has changed
-             *        progress --> The current progress level. This will be in the range 0..max where max was set by setMax(int). (The default value for max is 100.)
-             *        fromUser -->  True if the progress change was initiated by the user.
-             * Output: sets the leftMotorVelocityText value according to the seekbar's value
-             * Logic: gets the seekbar's current value stored in the variable progressValue and sets the text of leftMotorVelocityText accordingly
-             * Example Call: called automatically when the seekbar's value changes
-             *
-             */
+
+         /**
+         * Function Name: onProgressChanged
+         * Input: seekBar --> The SeekBar whose progress has changed
+         *        progress --> The current progress level. This will be in the range 0..max where max was set by setMax(int). (The default value for max is 100.)
+         *        fromUser -->  True if the progress change was initiated by the user.
+         * Output: sets the leftMotorVelocityText value according to the seekbar's value
+         * Logic: gets the seekbar's current value stored in the variable progressValue and sets the text of leftMotorVelocityText accordingly
+         * Example Call: called automatically when the seekbar's value changes
+         *
+         **/
             @Override
             public void onProgressChanged(SeekArc seekBar, int progressValue, boolean fromUser) {
                 progress = progressValue;
                 leftMotorVelocityText.setText("" + progress);
             }
 
-            /**
-             *
-             * Function Name: onStartTrackingTouch
-             * Input: seekBar --> The SeekBar in which the touch gesture began
-             * Example Call: called automatically when the seekbar is touched
-             *
-             */
+         /**
+         * Function Name: onStartTrackingTouch
+         * Input: seekBar --> The SeekBar in which the touch gesture began
+         * Example Call: called automatically when the seekbar is touched
+         *
+         **/
             @Override
             public void onStartTrackingTouch(SeekArc seekBar) {
             }
 
-            /**
-             *
-             * Function Name: onStopTrackingTouch
-             * Input: seekBar --> The SeekBar in which the touch gesture began
-             * Example Call: called automatically when the change in seekbar's value stops
-             *
-             */
+         /** Function Name: onStopTrackingTouch
+         * Input: seekBar --> The SeekBar in which the touch gesture began
+         * Example Call: called automatically when the change in seekbar's value stops
+         *
+         **/
             @Override
             public void onStopTrackingTouch(SeekArc seekBar) {
 
@@ -156,7 +147,7 @@ public class VelocityActivity extends ActionBarActivity {
              * Logic: gets the seekbar's current value stored in the variable progressValue and sets the text of rightMotorVelocityText accordingly
              * Example Call: called automatically when the seekbar's value changes
              *
-             */
+             **/
             @Override
             public void onProgressChanged(SeekArc seekBar, int progressValue, boolean fromUser) {
                 progress = progressValue;
@@ -174,13 +165,13 @@ public class VelocityActivity extends ActionBarActivity {
             public void onStartTrackingTouch(SeekArc seekBar) {
             }
 
-            /**
-             *
-             * Function Name: onStopTrackingTouch
-             * Input: seekBar --> The SeekBar in which the touch gesture began
-             * Example Call: called automatically when the change in seekbar's value stops
-             *
-             */
+
+        /* *
+         * Function Name: onStopTrackingTouch
+         * Input: seekBar --> The SeekBar in which the touch gesture began
+         * Example Call: called automatically when the change in seekbar's value stops
+         *
+         */
             @Override
             public void onStopTrackingTouch(SeekArc seekBar) {
 
@@ -188,119 +179,7 @@ public class VelocityActivity extends ActionBarActivity {
         });
 
 
-       /* // assigns TextChangedListener to leftMotorVelocityText
-        leftMotorVelocityText.addTextChangedListener(new TextWatcher() {
 
-            *//**
-             *
-             * Function Name: beforeTextChanged
-             * Example Call: This method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
-             *               It is an error to attempt to make changes to s from this callback.
-             *
-             *//*
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            *//**
-             *
-             * Function Name: onTextChanged
-             * Input: s --> char sequence which stores the characters
-             *        start --> integer which stores the starting location from where the characters have been changed
-             *        before --> integer which contains the length of the text that has been replaced
-             *        count --> integer which stores the length of new characters
-             * Output: sets the seek bars value according to the text entered
-             * Logic: This method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
-             * Example Call: called automatically when the text is changing
-             *
-             *//*
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!leftMotorVelocityText.getText().toString().isEmpty() && leftMotorVelocityText.getText().toString().length()<4) {
-                    int value = Integer.parseInt(leftMotorVelocityText.getText().toString());
-
-                    if (value <= 255) {
-                       leftMotorVelocitySeekBar.setProgress(0);
-                    } else {
-                        leftMotorVelocitySeekBar.setProgress(0);
-                        leftMotorVelocityText.setText("0");
-                    }
-                }
-
-            }
-
-
-            *//**
-             *
-             * Function Name: afterTextChanged
-             * Input: the editable text s
-             * Logic: This method is called to notify you that, somewhere within s, the text has been changed.
-             * Example Call: called automatically after the text has been changed
-             *
-             *//*
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-        // assigns TextChangedListener to rightMotorVelocityText
-        rightMotorVelocityText.addTextChangedListener(new TextWatcher() {
-
-            *//**
-             *
-             * Function Name: beforeTextChanged
-             * Example Call: This method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
-             *               It is an error to attempt to make changes to s from this callback.
-             *
-             *//*
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            *//**
-             *
-             * Function Name: onTextChanged
-             * Input: s --> char sequence which stores the characters
-             *        start --> integer which stores the starting location from where the characters have been changed
-             *        before --> integer which contains the length of the text that has been replaced
-             *        count --> integer which stores the length of new characters
-             * Output: sets the seek bars value according to the text entered
-             * Logic: This method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
-             * Example Call: called automatically when the text is changing
-             *
-             *//*
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-               *//* if (!rightMotorVelocityText.getText().toString().isEmpty() && rightMotorVelocityText.getText().toString().length()<4) {
-                    int value = Integer.parseInt(rightMotorVelocityText.getText().toString());
-
-                    if (value <= 255) {
-                        rightMotorVelocitySeekBar.setProgress(value);
-                    } else {
-                        rightMotorVelocitySeekBar.setProgress(0);
-                        rightMotorVelocityText.setText("0");
-                    }
-                }*//*
-            }
-
-            *//**
-             *
-             * Function Name: afterTextChanged
-             * Input: the editable text s
-             * Logic: This method is called to notify you that, somewhere within s, the text has been changed.
-             * Example Call: called automatically after the text has been changed
-             *
-             *//*
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-*/
         // assigns the OnClickListener with the setButton
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -444,12 +323,11 @@ public class VelocityActivity extends ActionBarActivity {
         int id = item.getItemId();
 
 
-        if (id == android.R.id.home) {
-            /*Intent intent = new Intent(VelocityActivity.this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);*/
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
+        if (id == R.id.action_home_velocity) {
+
+            Intent i = new Intent(VelocityActivity.this, ControlActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
         }
 
 

@@ -1,143 +1,168 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context="com.example.jatin.wi_bird.ControlActivity">
 
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
 
 
-    <ImageView
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <!--<ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         android:paddingTop="24dp"
         android:alpha=".75"/>
-    <!--android:src="@drawable/background"-->
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
-    <ScrollView
+    &lt;!&ndash;android:src="@drawable/background"&ndash;&gt;-->
+    <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/app_bar">
+        android:background="@color/back">
 
-        <RelativeLayout
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
-
-            <GridLayout
-
-                android:id="@+id/gridLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
-
-
-
-                <ImageView
-                    android:id="@+id/forward"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:layout_marginBottom="2dp"
-                    android:layout_row="0"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_arrow_up" />
-
-                <ImageView
-                    android:id="@+id/rotate_left"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="0"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="2dp"
-                    android:layout_row="0"
-                    android:layout_rowSpan="3"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_arrow_left" />
-
-                <ImageView
-                    android:id="@+id/backward"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-
-                    android:layout_column="1"
-                    android:layout_marginTop="2dp"
-                    android:layout_row="2"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_arrow_down" />
-
-                <ImageView
-                    android:id="@+id/stop"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="1"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_row="1"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_stop" />
-
-                <ImageView
-                    android:id="@+id/rotate_right"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="2dp"
-                    android:layout_row="0"
-                    android:layout_rowSpan="3"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_arrow_right" />
-            </GridLayout>
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/gridLayout"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp">
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
-                <ImageView
-                    android:id="@+id/buzzer_on"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerHorizontal="true"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_buzzer_on" />
+                <GridLayout
 
-                <ImageView
-                    android:id="@+id/buzzer_off"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerHorizontal="true"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_buzzer_off" />
+                    android:id="@+id/gridLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true">
 
-                <com.example.jatin.wi_bird.MyCustomTextView
-                    android:id="@+id/buzzer_status"
+
+                    <ImageView
+                        android:id="@+id/forward"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_column="1"
+
+                        android:layout_row="0"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_arrow_up" />
+
+                    <ImageView
+                        android:id="@+id/rotate_left"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_column="0"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_row="0"
+                        android:layout_rowSpan="3"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_arrow_left" />
+
+                    <ImageView
+                        android:id="@+id/backward"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+
+                        android:layout_column="1"
+
+                        android:layout_row="2"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_arrow_down" />
+
+                    <ImageView
+                        android:id="@+id/stop"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_column="1"
+
+                        android:layout_row="1"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_stop" />
+
+                    <ImageView
+                        android:id="@+id/rotate_right"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_column="2"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="2dp"
+                        android:layout_row="0"
+                        android:layout_rowSpan="3"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_arrow_right" />
+                </GridLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="BUZZER OFF"
-                    android:textSize="20sp"
-                    android:textColor="@color/buzzer_status"
-                    android:textStyle="bold"
-                    android:layout_alignParentBottom="true"
-                    android:layout_below="@+id/buzzer_off"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center" />
+                    android:layout_below="@+id/gridLayout"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="30dp">
+
+
+
+                    <ImageView
+                        android:id="@+id/buzzer_on"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_buzzer_on" />
+
+                    <ImageView
+                        android:id="@+id/buzzer_off"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_buzzer_off" />
+
+                    <com.example.jatin.wi_bird.MyCustomTextView
+                        android:id="@+id/buzzer_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/buzzer_off"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="BUZZER OFF"
+                        android:textColor="@color/buzzer_status"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
             </RelativeLayout>
 
-        </RelativeLayout>
+        </ScrollView>
 
-    </ScrollView>
-
-</RelativeLayout>
+    </RelativeLayout>
+        <fragment
+            android:id="@+id/fragment_navigation_drawer"
+            android:layout_width="@dimen/nav_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:name="com.example.jatin.wi_bird.NavigationDrawerFragment"
+            app:layout="@layout/fragment_navigation_drawer"
+            tools:layout="@layout/fragment_navigation_drawer" />
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

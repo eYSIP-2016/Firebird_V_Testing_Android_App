@@ -5,9 +5,6 @@
     <dimen name="app_bar_top_padding">0dp</dimen>
 
 
-
-
-
     <dimen name="title">17dp</dimen>
     <dimen name="sensor_value">15dp</dimen>
     <!-- Main Activity Appbar-->
@@ -24,7 +21,7 @@
     <dimen name="image_left">16dp</dimen>
     <dimen name="text_left">72dp</dimen>
     <dimen name="drawer_text_size">14sp</dimen>
-
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>

@@ -80,7 +80,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             int pos = getPosition();
             if (pos == 0) {
 
-                i = new Intent(context, ControlActivity.class);
+                i = new Intent(context, AboutUsActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);
             } else if (pos == 1) {

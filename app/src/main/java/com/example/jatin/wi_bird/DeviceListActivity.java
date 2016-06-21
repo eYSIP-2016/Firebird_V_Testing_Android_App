@@ -1,3 +1,11 @@
+/*
+ *
+ * Project Name: Android App development for testing Firebird V Robot
+ * Author List: Jatin Mittal
+ * Filename: DeviceListActivity.java
+ * Functions: onCreate(Bundle)
+ * Global Variables: EXTRA_DEVICE_ADDRESS, mBtAdapter, mNewDevicesArrayAdapter
+ */
 package com.example.jatin.wi_bird;
 
 import android.app.Activity;
@@ -13,59 +21,49 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.Set;
+/*
+ * Class Name: DeviceListActivity
+ * Logic: This activity creates the list of all the paired bluetooth devices
+ * Example Call: new DeviceListActivity()
+ */
 
 public class DeviceListActivity extends ActionBarActivity {
-
-
-
-    /**
-     * Return Intent extra
-     */
+    //return Intent extra
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
-
-    /**
-     * Member fields
-     */
+    //holds the BluetoothAdapter object
     private BluetoothAdapter mBtAdapter;
-
-    /**
-     * Newly discovered devices
-     */
     private ArrayAdapter<String> mNewDevicesArrayAdapter;
 
+    /**
+     *
+     * Function Name: onCreate
+     * Input: savedInstanceState --> If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently
+     *        supplied in onSaveInstanceState(Bundle). Note: Otherwise it is null.
+     * Output: sets up the ControlActivity
+     * Logic: Called when the activity is starting. This is where most initialization should go: calling setContentView(int) to inflate the activity's UI,
+     *        using findViewById(int) to programmatically interact with widgets in the UI
+     * Example Call: Called automatically when the activity is created
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         // Setup the window
-
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
-
         // Set result CANCELED in case the user backs out
         setResult(Activity.RESULT_CANCELED);
-
-
         // Initialize array adapters. One for already paired devices and
         // one for newly discovered devices
         ArrayAdapter<String> pairedDevicesArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-
-
         // Find and set up the ListView for paired devices
         ListView pairedListView = (ListView) findViewById(R.id.paired_devices);
         pairedListView.setAdapter(pairedDevicesArrayAdapter);
         pairedListView.setOnItemClickListener(mDeviceClickListener);
-
-
-
-
         // Get the local Bluetooth adapter
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
-
         // Get a set of currently paired devices
         Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
-
         // If there are paired devices, add each one to the ArrayAdapter
         if (pairedDevices.size() > 0) {
             findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
@@ -78,33 +76,20 @@ public class DeviceListActivity extends ActionBarActivity {
         }
     }
 
-
-
-
-
-
     /**
      * The on-click listener for all devices in the ListViews
      */
     private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-
-
             // Get the device MAC address, which is the last 17 chars in the View
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
-
             // Create the result Intent and include the MAC address
             Intent intent = new Intent();
             intent.putExtra(EXTRA_DEVICE_ADDRESS, address);
-
             // Set result and finish this Activity
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
     };
-
-
-
-
 }

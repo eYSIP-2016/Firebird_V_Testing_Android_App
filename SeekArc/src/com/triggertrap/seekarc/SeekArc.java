@@ -60,7 +60,7 @@ public class SeekArc extends View {
 	/**
 	 * The Maximum value that this SeekArc can be set to
 	 */
-	private int mMax = 255;
+	private int mMax = 100;
 	
 	/**
 	 * The Current value that the SeekArc is set to
@@ -139,7 +139,7 @@ public class SeekArc extends View {
 		 * @param progress
 		 *            The current progress level. This will be in the range
 		 *            0..max where max was set by
-		 *            {@link    # setMax(int)}. (The default value for
+		 *            {@link ProgressArc#setMax(int)}. (The default value for
 		 *            max is 100.)
 		 * @param fromUser
 		 *            True if the progress change was initiated by the user.
@@ -460,7 +460,7 @@ public class SeekArc extends View {
 	 * @param l
 	 *            The seek bar notification listener
 	 * 
-	 * @see SeekArc OnSeekBarChangeListener
+	 * @see SeekArc.OnSeekBarChangeListener
 	 */
 	public void setOnSeekArcChangeListener(OnSeekArcChangeListener l) {
 		mOnSeekArcChangeListener = l;

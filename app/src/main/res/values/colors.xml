@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!--primaryColor-500-->
-    <color name="primaryColor">#009688</color>
+    <color name="primaryColor">#2196F3</color>
 	<!--primaryColorDark-700-->
-    <color name="primaryColorDark">#00796B</color>
+    <color name="primaryColorDark">#1976D2</color>
 	<!--colorAccent-500-->
-    <color name="colorAccent">#009688</color>
+    <color name="colorAccent">#2196F3</color>
 	<!--pressed-700-->
-    <color name="pressed">#00796B</color>
+    <color name="pressed">#1976D2</color>
     <color name="drawer">#EEE</color>
     <color name="back">#F5F5F5</color>
     <color name="colorHighlight">#B6B6B6</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
-    <color name="red">#FC1501</color>
+
 
     <color name="genre">#666666</color>
     <color name="year">#888888</color>
 	<!--listDivider-100-->
-    <color name="list_divider">#B2DFDB</color>
+    <color name="list_divider">#BBDEFB</color>
     <color name="list_row_start_color">#7986CB</color>
     <color name="list_row_end_color">#5C6BC0</color>
     <color name="list_row_hover_start_color">#ebeef0</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
 	<!--text_head1-100-->
-    <color name="text_head1">#B2DFDB</color>
+    <color name="text_head1">#BBDEFB</color>
     <color name="text_head2">#9E9E9E</color>
 	<!--shadowColor-300-->
-    <color name="shadowColor">#4DB6AC</color>
+    <color name="shadowColor">#64B5F6</color>
 	<!--text_sensor-400-->
-    <color name="text_sensor">#26A69A</color>
+    <color name="text_sensor">#42A5F5</color>
     <color name="buzzer_status">#E91E63</color>
 
 </resources>

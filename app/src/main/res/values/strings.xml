@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Bluebird</string>
-    <string name="title_activity_main">Bluebird</string>
+    <string name="title_activity_main">About Us</string>
     <string name="title_activity_control">Control Option</string>
     <!--<string name="title_activity_sensor">Sensor Values</string>-->
     <string name="title_activity_velocity">Set Velocity</string>
@@ -73,8 +73,9 @@
         \nTop Speed: 24 cm / second
         \nWheel Diameter: 51mm
         \nPosition encoder: 30 pulses per revolution\nPosition encoder resolution: 5.44 mm</string>
-    <string name="bluetooth">Connect via Bluetooth</string>
+    <string name="bluetooth">Connect</string>
     <string name="disconnect">Disconnect</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
 
 </resources>

@@ -4,9 +4,9 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
 
-        <item name="android:colorPrimary" >@color/primaryColor</item>
-        <item name="android:colorPrimaryDark" >@color/primaryColorDark</item>
-        <item name="android:colorAccent" >@color/colorAccent</item>
+        <item name="android:colorPrimary">@color/primaryColor</item>
+        <item name="android:colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorPressedHighlight">@color/pressed</item>
         <item name="android:popupTheme">@style/Widget.AppCompat.PopupMenu</item>
     </style>
@@ -30,11 +30,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-
-    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
-        <item name="android:colorButtonNormal">@color/colorAccent</item>
-
-    </style>
 
 
 
