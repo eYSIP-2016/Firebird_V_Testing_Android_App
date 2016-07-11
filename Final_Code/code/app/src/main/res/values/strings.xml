@@ -1,0 +1,81 @@
+<resources>
+
+    <string name="app_name">Bluebird</string>
+    <string name="title_activity_main">About Us</string>
+    <string name="title_activity_control">Control Option</string>
+    <!--<string name="title_activity_sensor">Sensor Values</string>-->
+    <string name="title_activity_velocity">Set Velocity</string>
+
+
+    <string name="action_home">Home</string>
+    <string name="action_net">Connect To</string>
+
+    <string name="drawer_open">Select</string>
+    <string name="drawer_close">Bluebird</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_device_list">DeviceListActivity</string>
+
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_help">Help</string>
+    <string name="title_activity_motion_control">MotionControl</string>
+    <string name="title_activity_gesture_motion_control">GestureMotionControl</string>
+    <string name="title_activity_sensor_reading">SensorReading</string>
+    <string name="title_activity_motion_control_fragment">MotionControlFragment</string>
+    <string name="title_activity_gesture_motion_control_fragment">GestureMotionControlFragment
+    </string>
+    <string name="title_activity_sensor_reading_fragment">SensorReadingFragment</string>
+    <string name="title_activity_motion">Motion</string>
+    <string name="title_activity_sensor">Sensor Values</string>
+    <string name="title_activity_gesture_control">GestureControl</string>
+    <string name="gesture_control">Gesture Control</string>
+
+    <!-- DeviceListActivity -->
+    <string name="select_device">select a device to connect</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    <string name="gesture_mode">Gesture Mode</string>
+    <string name="custom_mode">Custom Mode</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="angle">Angle</string>
+    <string name="main_activity_content">As a Universal Robotic Research Platform, Fire Bird V provides an excellent environment
+        for experimentation, algorithm development and testing. Fire Bird V is evolved from Fire Bird IV and Fire Bird II which
+        are being used in IIT Bombay to teach embedded systems and robotics. Its modular architecture allows you to control it
+        using multiple processors such as 8051, AVR, PIC and ARM7 etc. Modular sensor pods can be mounted on the platform as
+        dictated by intended applications. Precision position encoders makes it possible to have accurate position control.
+        The platform can be upgraded to tank drive and Hexapod insect or any other desired form very easily. It is powered by high
+        performance rechargeable NiMH batteries. A 2.4 GHz ZigBee module provides state of the art secure and multi-channel
+        wireless communication up to a range of one kilometer.</string>
+    <string name="micro_content">Atmel ATMEGA2560 as Master microcontroller\nAtmel ATMEGA8 as Slave microcontroller</string>
+    <string name="sensor_content">Three white line sensors (extendable to 7)
+        \nFive Sharp GP2Y0A02YK IR range sensor
+        \nEight analog IR proximity sensors
+        \nTwo position encoders (extendable to four)
+        \nBattery voltage sensing
+        \nCurrent Sensing (Optional)
+        \nFive MaxBotix Ultrasonic Range Sensors (Optional)</string>
+    <string name="indicator_content">2 x 16 Characters LCD\nBuzzer and Indicator LEDs</string>
+    <string name="control_content">Autonomous Control\nPC as Master and Robot as Slave in wired or wireless mode</string>
+    <string name="comm_content">Wired RS232 (serial) communication
+    \nWireless ZigBee Communication (2.4GHZ)
+    \nWi-Fi communication\nBluetooth communication
+    \nSimplex infrared communication</string>
+    <string name="dimension_content">Diameter: 16cm\nHeight: 8.5cm\nWeight: 1100gms</string>
+    <string name="power_content">9.6V Nickel Metal Hydride (NiMH) battery pack and external Auxiliary power from battery charger.
+    \nOn Board Battery monitoring and intelligent battery charger.</string>
+    <string name="battery_content">2 Hours, while motors are operational at 75% of time</string>
+    <string name="locomotion_content">Two DC geared motors in differential drive configuration and caster wheel at front as support
+        \nTop Speed: 24 cm / second
+        \nWheel Diameter: 51mm
+        \nPosition encoder: 30 pulses per revolution\nPosition encoder resolution: 5.44 mm</string>
+    <string name="bluetooth">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+
+</resources>

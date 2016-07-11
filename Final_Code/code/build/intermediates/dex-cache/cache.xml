@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_b4a866755a6cda5ffa4fa1691d5bed4af33f9f94.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="40e7757d9b06db670062ddb3cf5b30c129b2fd8c">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.0.0_4435f5741d4d26c3b80d09c0fe77558d7a591737.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\libs\mpandroidchartlibrary-2-1-2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5174e30c198a42ab59241ab8a89d9b5b9c3c909d">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\mpandroidchartlibrary-2-1-2_8c4a08e3593f5c021e51e224532b96d4967891f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.github.Triggertrap\SeekArc\v1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="667c7c266ee94f433de491ca8fd5a2090d152ca5">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\com.github.Triggertrap-SeekArc-v1.1_2849e9b4c0a06fb4d1482f3586444cf5d20d62fe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.0-alpha3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a2bcc25d161a84d8eabde61806dad90029b3ff15">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\com.android.support.constraint-constraint-layout-1.0.0-alpha3_8c00745003546861aab13d59af1e56e93c705708.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_a01597f8863f562e1ba29e2339d60d834e2bab84.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_b72df4268c4cf97e011d2c8733d16f4a1abbf646.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\Downloads\android-studio-ide-145.2949926-windows\android-studio\gradle\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-alpha3\constraint-layout-solver-1.0.0-alpha3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29e762ef46d0cb2b648eb3d25eeb2b29853579fe">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.0-alpha3_ea260bad0d1bab9834fb8626c0d01208f207ac22.jar" />
+    </item>
+    <item
+        jar="C:\Users\Trapti mittal\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Trapti mittal\Desktop\e-YSIP 16\project_new\Firebird_V_Testing_Android_App\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_9eda2498c427a52b96cc7b9f5ea8b168fbf1265e.jar" />
+    </item>
+
+</items>
